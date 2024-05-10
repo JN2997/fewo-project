@@ -13,6 +13,13 @@
             linear-gradient(to right, #FFFFFF 65%, #E5F6FB 95%);
             color: #262626;
         }
+		footer {
+			background-color: transparent; /* Hintergrundfarbe des Footers */
+			padding: 20px; /* Polsterung im Footer für Abstand */
+			text-align: center; /* Zentriert den Text im Footer */
+			margin-top: 200px; /* Abstand zum Inhalt */
+			grid-column: 1 / -1;
+}
 		.logo img {
             width: 360px; /* oder die Größe, die Sie wünschen */
             cursor: pointer;
@@ -31,7 +38,7 @@
             padding: 0;
             display: grid;
             grid-template-columns: 15% 70% 15%;
-			grid-template-rows: auto 1fr; /* Header und Inhalte */
+			grid-template-rows: auto 1fr auto; /* Header und Inhalte */
             height: 100vh;
             gap: 20px;
             /* Verbesserter horizontaler Gradient */

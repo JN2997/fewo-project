@@ -111,14 +111,12 @@
             </div>
         </div>
     </div>
-<div style="text-align: center;">
-    <footer>
+</main>
+<footer>
   <p>Kontaktieren Sie uns für weitere Informationen:</p>
   <p>Telefon: 123-456-789</p>
   <p>Email: info@IhrFerienDomizil.com</p>
 </footer>
-</div>
-</main>
 
 
         <!-- Das Anmelde-Popup -->
