@@ -1,0 +1,232 @@
+        header {
+			grid-column: 1 / -1; /* Header über die gesamte Breite */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+			position: sticky; /* Macht den Header sticky */
+			top: 0; /* Setzt den Header an den oberen Rand des Viewports */
+			z-index: 1000; /* Stellt sicher, dass der Header über anderen Inhalten liegt */
+			box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Fügt einen leichten Schatten */
+			background: 
+			linear-gradient(to left, #FFFFFF 65%, #E5F6FB 95%),
+            linear-gradient(to right, #FFFFFF 65%, #E5F6FB 95%);
+            color: #262626;
+        }
+		.logo img {
+            width: 360px; /* oder die Größe, die Sie wünschen */
+            cursor: pointer;
+        }
+
+        .menu {
+            display: flex;
+            gap: 20px; /* Abstand zwischen den Menüpunkten */
+			padding-right: 30px;
+			padding-left: 20px;
+        }
+
+		body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 15% 70% 15%;
+			grid-template-rows: auto 1fr; /* Header und Inhalte */
+            height: 100vh;
+            gap: 20px;
+            /* Verbesserter horizontaler Gradient */
+            background: 
+			linear-gradient(to left, #FFFFFF 65%, #E5F6FB 95%),
+            linear-gradient(to right, #FFFFFF 65%, #E5F6FB 95%);
+            color: #262626;
+        }
+		/* Stil für alle Überschriften */
+			h1, h2, h3, h4, h5, h6 {
+				font-weight: bold; /* Macht die Schrift fett */
+				color: #18227c; /* Setzt die Farbe auf Dunkelblau */
+			}
+        main {
+            background-color: transparent; /* Ermöglicht die Sichtbarkeit des Hintergrund-Gradients */
+            grid-column: 2 / 3;
+        }
+        .sidebar-left{
+			grid-row:2;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background-color: transparent; /* Sorgt dafür, dass der Gradient sichtbar bleibt */
+        }
+		/*.sidebar-right{
+            padding: 50px;
+			margin-right: 40px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background-color: transparent; /* Sorgt dafür, dass der Gradient sichtbar bleibt 
+        }*/
+		.popupanmelden, .popupregistrieren {
+			position: relative;
+			z-index: 500; /* niedriger als der Header, aber hoch genug für Überlagerungszwecke */
+			width: 100%;
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: white;
+			padding: 25px; /* Mehr Innenabstand für den gesamten Popup-Container */
+			border: 1.5px solid #18227c; /* Dunkelblaue Rahmenfarbe */
+			border-radius: 20px;
+			box-shadow: 0 6px 8px rgba(0, 0, 0, 1.5);
+			width: 300px; /* Fixe Breite für das Popup */
+			text-align: center;
+
+		}
+
+		input[type="text"], input[type="password"], input[type="email"], button {
+			width: 100%; /* Setzt die Breite auf die volle Containerbreite */
+			padding: 16px 20px; /* Erhöht die Polsterung für größere Eingabefelder */
+			margin-bottom: 10px; /* Setzt den Abstand zwischen den Feldern */
+			display: block; /* Block-Display, um die volle Breite zu nutzen */
+			border: 1px solid #ccc; /* Feinere Rahmenlinie */
+			border-radius: 20px; /* Abrunden der Ecken */
+			box-sizing: border-box; /* Box-Sizing auf border-box umstellen */
+
+		}
+		
+		.container-suche {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 20px;
+			min-height: 25vh; /* Stellt sicher, dass die Suchleiste vertikal zentriert ist */
+		}	
+		.search-form {
+			display: flex;
+			gap: 20px; /* Abstand zwischen den Elementen */
+			align-items: center;
+			font-family: Arial, sans-serif; /* Stellt Arial als Schriftart ein */
+			width: 90%; /* Breite des Formulars, anpassbar nach Bedarf */
+			max-width: 1000px; /* Maximale Breite, um auf großen Bildschirmen nicht zu breit zu werden */
+			margin: 30px auto; /* Zentriert das Formular horizontal */
+			padding: 10px;
+			background-color: transparent;
+			border: 1.5px solid #18227c; /* Fügt einen subtilen Rahmen hinzu */
+			border-radius: 50px;
+			box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		select, button {
+			padding: 12px 20px; /* Mehr Padding für ein besseres Aussehen */
+			width: 100%; /* Jedes Feld nimmt die volle Breite des Containers ein */
+			border: 3px solid #18227c; /* Fügt einen subtilen Rahmen hinzu */
+			border-radius: 20px; /* Abrundung der Ecken */
+			cursor: pointer;
+			margin-right: 10px; /* Fügt rechts einen kleinen Abstand hinzu */
+			margin-left:10px;
+			background-color: #fff; /* Hintergrundfarbe Weiß für klare Ansicht */
+			box-sizing: border-box; /* Box-Sizing, um Breitenberechnungen zu vereinfachen */
+		}
+		.container-highlights {
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 60%; /* Anpassung der Breite des Hauptcontainers */
+			margin: auto; /* Zentriert den Container horizontal */
+		}
+
+		.carousel-images {
+			display: flex;
+			justify-content: center; /* Zentriert die Bilder horizontal */
+			gap: 20px; /* Abstand zwischen den Bildern */
+			margin-bottom: 20px; /* Abstand zwischen den Bildern und dem Text darunter */
+		}
+
+		.carousel-images img {
+			width: 33%; /* Breite jedes Bildes */
+			transition: filter 0.5s ease, transform 0.5s ease;
+		}
+
+		.carousel-images img.previous,
+		.carousel-images img.next {
+			filter: blur(4px);
+			transform: scale(0.8); /* Verkleinert und macht die nicht-aktiven Bilder unscharf */
+		}
+
+		.carousel-images img.active {
+			filter: none;
+			transform: scale(1); /* Stellt sicher, dass das aktive Bild voll sichtbar und scharf ist */
+		}
+
+		.scrollable-containers {
+			display: flex;
+			justify-content: space-around; /* Gleichmäßiger Abstand zwischen den inneren Containern */
+			margin-top: 20px; /* Abstand zwischen Karussell und diesen Containern */
+		}
+
+		.scrollable-container {
+			flex: 1;
+			margin: 10px; /* Fügt Abstand zwischen den scrollable Containern hinzu */
+			padding: 20px;
+			border: 1px solid #ccc;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+			transition: box-shadow 0.3s ease, transform 0.3s ease; /* Weiche Übergänge für Schatten und Transformation */
+		}
+		.scrollable-container:hover {
+			transform: scale(1.03); /* Leichte Vergrößerung */
+			box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Intensivierung des Schattens */
+		}
+		.form-container {
+			display: flex; /* Verwendet Flexbox für eine flexible Layout-Gestaltung */
+			flex-direction: column; /* Stapelt Elemente vertikal */
+			gap: 10px; /* Setzt einen Abstand zwischen den Elementen */
+		}
+		/* Grundlegender Stil für Buttons */
+		button {
+			margin-top: 10px; /* Setzt einen Abstand von oben für jeden Button */
+			margin-bottom: 10px; /* Setzt einen Abstand von unten */
+			background-color: #18227c; /* Dunkelblau als Hintergrundfarbe */
+			color: white; /* Weiße Schrift */
+			border: none; /* Keine Rahmen */
+			padding: 14px 20px; /* Polsterung um den Text */
+			white-space: nowrap;
+			text-align: center; /* Zentrierter Text */
+			text-decoration: none; /* Keine Unterstreichung */
+			display: inline-block; /* Inline-Block für automatische Breitenanpassung */
+			font-size: 16px; /* Schriftgröße */
+			cursor: pointer; /* Cursor als Zeiger */
+			border-radius: 20px; /* Abrundung der Ecken */
+			transition: background-color 0.3s, color 0.3s; /* Weiche Übergänge für Farbwechsel */
+		}
+
+		/* Hover-Stil für Buttons */
+		button:hover {
+			background-color: #bd5793; /* Rosa beim Hovern */
+		}
+
+		/* Spezifischer Stil für die Schließ-Buttons 
+		button.cancel {
+			background-color: #999; /* Grau für Abbrechen-Buttons */
+		}
+
+		button.cancel:hover {
+			background-color: #666; /* Dunkelgrau beim Hovern */
+		}
+		*/
+		
+		.footer {
+			text-align: center;
+			width: 100%;
+			padding: 20px 0;
+			box-sizing: border-box;
+			background: transparent;
+			color: #262626;
+			font-size: 16px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto;
+		}
