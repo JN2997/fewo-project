@@ -19,7 +19,23 @@
 			text-align: center; /* Zentriert den Text im Footer */
 			margin-top: 200px; /* Abstand zum Inhalt */
 			grid-column: 1 / -1;
-}
+		}	
+			
+		.footer {
+			text-align: center;
+			width: 100%;
+			padding: 20px 0;
+			box-sizing: border-box;
+			background: transparent;
+			color: #262626;
+			font-size: 16px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto;
+		}
+
 		.logo img {
             width: 360px; /* oder die Größe, die Sie wünschen */
             cursor: pointer;
@@ -56,14 +72,19 @@
             background-color: transparent; /* Ermöglicht die Sichtbarkeit des Hintergrund-Gradients */
             grid-column: 2 / 3;
         }
-        .sidebar-left{
-			grid-row:2;
-            padding: 40px;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            background-color: transparent; /* Sorgt dafür, dass der Gradient sichtbar bleibt */
-        }
+		.sidebar-left {
+			grid-column: 1 / 2;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start; /* Linksbündige Ausrichtung der Inhalte */
+			justify-content: start;
+			height: 100vh; /* Volle Höhe */
+			position: sticky;
+			top: 0;
+			padding: 20px;
+			background-color: transparent; /* Hintergrundfarbe */
+			box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+		}
 		/*.sidebar-right{
             padding: 50px;
 			margin-right: 40px;
@@ -109,6 +130,15 @@
 			padding: 20px;
 			min-height: 25vh; /* Stellt sicher, dass die Suchleiste vertikal zentriert ist */
 		}	
+		
+		.tag-suche {
+			display: flex;
+			justify-content: left;
+			align-items: left;
+			padding: 20px;
+			min-height: 10vh;
+		}
+		
 		.search-form {
 			display: flex;
 			gap: 20px; /* Abstand zwischen den Elementen */
@@ -223,17 +253,3 @@
 		}
 		*/
 		
-		.footer {
-			text-align: center;
-			width: 100%;
-			padding: 20px 0;
-			box-sizing: border-box;
-			background: transparent;
-			color: #262626;
-			font-size: 16px;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			margin: 0 auto;
-		}

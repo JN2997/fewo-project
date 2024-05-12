@@ -18,27 +18,20 @@
             <a href="index.php"><img src="img/Zeichnung-Flach.png" alt="Logo"></a>
         </div>
         <nav class="menu">
-			<button onclick="window.open('buchen.php', '_blank');">Traumurlaub finden</button>
-			<button onclick="window.open('buchungen.php', '_blank');">Buchungen verwalten</button>
+			<button onclick="window.open('buchungen.php', '_blank');">Meine Buchungen</button>
 			<button onclick="window.open('unterkuenfte.php', '_blank');">Unterkünfte verwalten</button>
-			<button onclick="window.open('profil.php', '_blank');">Profil bearbeiten</button>
+			<button onclick="window.open('profil.php', '_blank');">Profil</button>
 			<button onclick="window.open('logout.php', '_self');">Logout</button>
         </nav>
     </header>
 
 <!-- Hauptinhalt -->
 <main>
-	 <!-- Popup-Anzeige bei erfolgreicher Registrierung -->
-    <?php if (isset($_SESSION['registration_success'])): ?>
-        <script>
-            alert('<?php echo $_SESSION['registration_success']; ?>');
-            <?php unset($_SESSION['registration_success']); ?>
-        </script>
-    <?php endif; ?>
+
 	
-	<div class="container-suche">
+		<div class="container-suche">
 		<!-- Suchleiste -->
-		<form class="search-form">
+		<form class="search-form" action="fewosuche.php" method="GET">
 			<select id="personenanzahl" name="personenanzahl">
 				<option value="" disabled selected>Anzahl Gäste</option>
 				<option value="1">1</option>
@@ -71,7 +64,7 @@
 				<option value="ungarn">Ungarn</option>
 			</select>
 
-			<button onclick="window.open('auswahl.php', '_blank');">Ferienhaus Suchen</button>
+			<button type="submit">Ferienhaus Suchen</button>
 		</form>
 	</div>
     <!-- Neuer Container für Highlights und darunterliegende Inhalte -->

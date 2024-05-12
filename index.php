@@ -38,7 +38,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
             <a href="index.php"><img src="img/Zeichnung-Flach.png" alt="Logo"></a>
         </div>
         <nav class="menu">
-			<button onclick="window.open('buchen.php', '_blank');">Traumurlaub finden</button>
 			<button onclick="window.open('vermieterseite.php', '_blank');">Unterkunft vermieten</button>
 			<button onclick="openPopupanmelden()">Anmelden</button>
             <button onclick="openPopupregistrieren()">Registrieren</button>
@@ -56,8 +55,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
 	
 	<div class="container-suche">
 		<!-- Suchleiste -->
-		<form class="search-form">
-			<select id="personenanzahl" name="personenanzahl">
+		<form class="search-form" action="fewosuche.php" method="GET">
+			<select id="personenanzahl" name="personenanzahl" required>
 				<option value="" disabled selected>Anzahl Gäste</option>
 				<option value="1">1</option>
 				<option value="2">2</option>
@@ -68,7 +67,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
 				<option value="7+">7+</option>
 			</select>
 
-			<select id="land" name="land">
+			<select id="land" name="land" required>
 				<option value="" disabled selected>Reiseziel</option>
 				<option value="deutschland">Deutschland</option>
 				<option value="oesterreich">Österreich</option>
@@ -89,7 +88,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
 				<option value="ungarn">Ungarn</option>
 			</select>
 
-			<button onclick="window.open('auswahl.php', '_blank');">Ferienhaus Suchen</button>
+			<button type="submit">Ferienhaus Suchen</button>
 		</form>
 	</div>
     <!-- Neuer Container für Highlights und darunterliegende Inhalte -->
@@ -129,8 +128,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
             </div>
         </div>
     </div>
-
-
 </div>
 </main>
 
