@@ -48,17 +48,7 @@ session_start();
             <?php endif; ?>
         </nav>
     </header>
-<!-- Hauptinhalt -->
-<main>
-		<div class="tag-suche">
-		<!-- Suchleiste -->
-		<form class="search-form" action="fewosuche.php" method="GET" target="_blank">
-				<label for="tagsuche"></label>
-				<input type="text" placeholder="Nach Tags suchen" name="email" required>
-			<button type="submit">Ferienhaus Suchen</button>
-		</form>
-	</div>
-	<!-- Linke Sidebar -->
+<!-- Linke Sidebar -->
 		<div class="sidebar-left">
 			<h2><span>Filter</span></h2> <BR>
 		 <form action="fewosuche.php" method="GET">
@@ -89,6 +79,9 @@ session_start();
 				</select>
 				<br><br>
 						<!-- Weitere Filteroptionen ohne initiale Werte -->
+						<label><input type="checkbox" name="filter" value="price1">ab 25€ pro Nacht</label><br>
+						<label><input type="checkbox" name="filter" value="price2">ab 100€ pro Nacht</label><br>
+						<label><input type="checkbox" name="filter" value="price3">ab 200€ pro Nacht</label><br>
 						<label><input type="checkbox" name="filter" value="pool">Pool</label><br>
 						<label><input type="checkbox" name="filter" value="wlan">WLAN</label><br>
 						<label><input type="checkbox" name="filter" value="strandnaehe">Strandnähe</label><br>
@@ -98,6 +91,17 @@ session_start();
 				<button type="submit">Suche aktualisieren</button>
 				</form>
 		</div>
+<!-- Hauptinhalt -->
+<main>
+		<div class="tag-suche">
+		<!-- Suchleiste -->
+		<form class="search-form" action="fewosuche.php" method="GET" target="_blank">
+				<label for="tagsuche"></label>
+				<input type="text" placeholder="Nach Tags suchen" name="email" required>
+			<button type="submit">Ferienhaus Suchen</button>
+		</form>
+	</div>
+	
 	 <!-- Popup-Anzeige bei erfolgreicher Registrierung -->
     <?php if (isset($_SESSION['registration_success'])): ?>
         <script>
