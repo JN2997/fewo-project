@@ -16,6 +16,8 @@ session_start();
     <title>Ihr Ferien Domizil</title>
 		<!-- CSS Aufrufe -->
 	<link rel="stylesheet" href="css/main.css">
+		<!-- JavaScript Aufrufe -->
+    <script src="js/popup.js"></script>
 
 </head>
 <body>

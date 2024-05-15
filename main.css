@@ -112,7 +112,7 @@
 
 		}
 
-		input[type="text"], input[type="password"], input[type="email"], button {
+		input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="file"], button {
 			width: 100%; /* Setzt die Breite auf die volle Containerbreite */
 			padding: 16px 20px; /* Erhöht die Polsterung für größere Eingabefelder */
 			margin-bottom: 10px; /* Setzt den Abstand zwischen den Feldern */
