@@ -95,14 +95,7 @@ session_start();
 		</div>
 <!-- Hauptinhalt -->
 <main>
-		<div class="tag-suche">
-		<!-- Suchleiste -->
-		<form class="search-form" action="fewosuche.php" method="GET" target="_blank">
-				<label for="tagsuche"></label>
-				<input type="text" placeholder="Nach Tags suchen" name="email" required>
-			<button type="submit">Ferienhaus Suchen</button>
-		</form>
-	</div>
+	<?php include 'initialsuche_hauser.php'; ?>
 	
 	 <!-- Popup-Anzeige bei erfolgreicher Registrierung -->
     <?php if (isset($_SESSION['registration_success'])): ?>
