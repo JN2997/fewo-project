@@ -252,4 +252,67 @@
 			background-color: #666; /* Dunkelgrau beim Hovern */
 		}
 		*/
-		
+		/* Stile für das Haus Add Formular */
+		.form-horizontal {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		.form-group {
+			display: flex;
+			gap: 20px;
+		}
+
+		.form-group-horizontal {
+			display: flex;
+			gap: 20px;
+		}
+
+		.upload_section {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+			min-width: 150px; /* Mindestbreite für bessere Lesbarkeit */
+		}
+		/* Stile für die Tags-Eingabe und das Dropdown-Menü */
+		.tags-input-container {
+			display: flex;
+			gap: 20px;
+			align-items: flex-start;
+		}
+
+		.tags-input {
+			flex-grow: 1;
+		}
+
+		.tags-container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-top: 10px;
+			flex-grow: 1;
+		}
+
+		#tags-select {
+			flex-grow: 1;
+			width: 100%;
+			max-width: 300px;
+			margin-top: 10px;
+		}
+
+		.tag {
+			display: inline-block;
+			background-color: #f1f1f1;
+			border: 1px solid #ccc;
+			padding: 5px;
+			margin: 2px;
+			border-radius: 3px;
+		}
+
+		.remove-tag {
+			margin-left: 5px;
+			margin-right: 10px;
+			cursor: pointer;
+			color: #ff0000;
+		}
