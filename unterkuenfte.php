@@ -27,6 +27,7 @@ $conn->close();
 		<!-- JavaScript Aufrufe -->
 	<script>
 		const dbTags = <?php echo json_encode($tags); ?>; // Konvertiert das PHP-Array $tags in ein JSON-Format und speichert es in einer JavaScript-Variablen dbTags.
+		console.log(dbTags); // Überprüfen, ob die Tags korrekt übergeben werden
 	</script>
 	
 	<script src="js/tags_add_haus.js" defer></script>
