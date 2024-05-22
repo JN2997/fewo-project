@@ -38,7 +38,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
             <a href="index.php"><img src="img/Zeichnung-Flach.png" alt="Logo"></a>
         </div>
         <nav class="menu">
-			<button onclick="window.open('unterkunft_vermieten_unlogged.php', '_blank');">Unterkunft vermieten</button>
 			<button onclick="openPopupanmelden()">Anmelden</button>
             <button onclick="openPopupregistrieren()">Registrieren</button>
         </nav>
@@ -53,81 +52,31 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
         </script>
     <?php endif; ?>
 	
-	<div class="container-suche">
-		<!-- Suchleiste -->
-		<form class="search-form" action="fewosuche.php" method="GET">
-			<select id="personenanzahl" name="personenanzahl" required>
-				<option value="" disabled selected>Anzahl Gäste</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-				<option value="7+">7+</option>
-			</select>
+	
+    <!-- Neuer Container für Vermieter Ansprache und Registrierung -->
+    <div class="container-vermieteransprache">
+        <h2>Willkommen bei "Ihr Ferien Domizil"</h2>
+        Vermieten Sie Ihre Unterkunft bei uns und profitieren Sie von vielen Vorteilen!
+		Wir freuen uns, dass Sie daran interessiert sind, Ihre Unterkunft auf bei uns zu vermieten.<br> 
+		Unsere Plattform bietet Ihnen eine Vielzahl von Vorteilen, um Ihre Ferienwohnung oder Ihr Ferienhaus optimal zu präsentieren und zu vermieten.<br>
 
-			<select id="land" name="land" required>
-				<option value="" disabled selected>Reiseziel</option>
-				<option value="deutschland">Deutschland</option>
-				<option value="oesterreich">Österreich</option>
-				<option value="schweiz">Schweiz</option>
-				<option value="italien">Italien</option>
-				<option value="spanien">Spanien</option>
-				<option value="frankreich">Frankreich</option>
-				<option value="schweden">Schweden</option>
-				<option value="niederlande">Niederlande</option>
-				<option value="kroatien">Kroatien</option>
-				<option value="tschechien">Tschechien</option>
-				<option value="finnland">Finnland</option>
-				<option value="england">England</option>
-				<option value="portugal">Portugal</option>
-				<option value="polen">Polen</option>
-				<option value="daenemark">Dänemark</option>
-				<option value="norwegen">Norwegen</option>
-				<option value="ungarn">Ungarn</option>
-			</select>
+		<h3>Warum bei uns vermieten?</h3>
+		<p><b>Reichweite:</b> Erreichen Sie Tausende von potenziellen Gästen weltweit. Unsere Plattform wird täglich von vielen Reisenden besucht, die auf der Suche nach ihrer perfekten Unterkunft sind.</p>
+		<p><b>Einfachheit:</b> Unser benutzerfreundliches System macht es Ihnen leicht, Ihre Unterkunft zu verwalten. Von der Verfügbarkeitskalender bis zur Preisgestaltung – alles ist intuitiv und einfach zu bedienen.</p>
+		<p><b>Support:</b> Unser engagiertes Support-Team steht Ihnen jederzeit zur Verfügung, um Ihre Fragen zu beantworten und Ihnen bei der Verwaltung Ihrer Unterkunft zu helfen.
+		<h3>So einfach geht's:</h3>
+		<p><b>Registrieren:</b> Erstellen Sie ein Konto bei uns. Es dauert nur wenige Minuten!</p>
+		<p><b>Anmelden:</b> Loggen Sie sich ein und fügen Sie Ihre Unterkunft hinzu.</p>
+		<p><b>Inserieren:</b> Füllen Sie die Details Ihrer Unterkunft aus, laden Sie schöne Fotos hoch und legen Sie Ihre Preise fest.</p>
+		<p><b>Vermieten:</b> Begrüßen Sie Ihre ersten Gäste!</p>
+		<p><b>Jetzt registrieren oder anmelden:</b> 
+		Um Ihre Unterkunft zu vermieten, müssen Sie sich bei uns registrieren oder anmelden. Klicken Sie einfach auf den untenstehenden Button und starten Sie noch heute:</p>
 
-			<button type="submit">Ferienhaus Suchen</button>
-		</form>
-	</div>
-    <!-- Neuer Container für Highlights und darunterliegende Inhalte -->
-    <div class="container-highlights">
-        <h2>Unsere Highlights, egal ob Berge, Wasser oder Stadt</h2>
-        <div class="carousel">
-            <div class="carousel-images">
-                <img src="img/Ferienhaus1.jpeg" alt="Bild 1" class="previous">
-                <img src="img/Ferienhaus3.jpeg" alt="Bild 2" class="active">
-                <img src="img/Ferienhaus2.jpeg" alt="Bild 3" class="next">
-            </div>
-        </div>
-        <div class="scrollable-containers">
-            <div class="scrollable-container">
-                <h2>Ferienanlage</h2>
-                <p>Max. 8 Personen</p>
-                <p>Mit Dachterrasse, Küche und Pool</p>
-                <p>150€/Tag</p>
-                <button>Mehr Infos</button>
-                <button onclick="openSecondPage()">Direkt buchen</button>
-            </div>
-            <div class="scrollable-container">
-                <h2>Berghütte</h2>
-                <p>Max. 6 Personen</p>
-                <p>Mit Bergblick, Sauna und Garten</p>
-                <p>200€/Tag</p>
-                <button>Mehr Infos</button>
-                <button onclick="openSecondPage()">Zur zweiten Seite</button>
-            </div>
-            <div class="scrollable-container">
-                <h2>Haus am See</h2>
-                <p>Max. 4 Personen</p>
-                <p>Zentral gelegen, modern ausgestattet</p>
-                <p>100€/Tag</p>
-                <button>Mehr Infos</button>
-                <button onclick="openSecondPage()">Zur zweiten Seite</button>
-            </div>
-        </div>
-    </div>
+        <button onclick="openPopupregistrieren()">Jetzt Registrieren und vermieten</button><br><br>
+
+		Wir freuen uns darauf, Sie als Gastgeber willkommen zu heißen!<br><br>
+
+		Ihr FerienDomizil-Team<br>
 </div>
 </main>
 
@@ -173,7 +122,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
 			<input type="password" placeholder="Passwort wiederholen" name="confirm_psw" required>
 			
 			<label for="is_vermieter">Ich möchte mich auch als Vermieter registrieren:</label>
-			<input type="checkbox" id="is_vermieter" name="is_vermieter">
+			<input type="checkbox" id="is_vermieter" name="is_vermieter" checked>
 			
             <button type="submit" class="btn">Registrierung abschicken</button>
             <button type="button" class="btn cancel" onclick="closePopup()">Abbrechen</button>

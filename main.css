@@ -78,10 +78,10 @@
 			flex-direction: column;
 			align-items: flex-start; /* Linksbündige Ausrichtung der Inhalte */
 			justify-content: start;
-			height: 100vh; /* Volle Höhe */
+		/*	height: 100vh;  Volle Höhe */
 			position: sticky;
 			top: 0;
-			padding: 20px;
+			padding: 40px;
 			background-color: transparent; /* Hintergrundfarbe */
 			box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 		}
@@ -172,6 +172,22 @@
 			align-items: center;
 			width: 60%; /* Anpassung der Breite des Hauptcontainers */
 			margin: auto; /* Zentriert den Container horizontal */
+		}
+		
+		.container-vermieteransprache {
+			text-align: center;
+			
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 60%; /* Anpassung der Breite des Hauptcontainers */
+			margin: auto; /* Zentriert den Container horizontal */
+		}
+		
+		.container-vermieteransprache p {
+			text-align: center;
+			width: 100%;
+			margin: 0 0 1em 0; /* Abstand zwischen den Absätzen */
 		}
 
 		.carousel-images {
