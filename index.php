@@ -91,43 +91,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
 			<button type="submit">Ferienhaus Suchen</button>
 		</form>
 	</div>
-    <!-- Neuer Container für Highlights und darunterliegende Inhalte -->
-    <div class="container-highlights">
-        <h2>Unsere Highlights, egal ob Berge, Wasser oder Stadt</h2>
-        <div class="carousel">
-            <div class="carousel-images">
-                <img src="img/Ferienhaus1.jpeg" alt="Bild 1" class="previous">
-                <img src="img/Ferienhaus3.jpeg" alt="Bild 2" class="active">
-                <img src="img/Ferienhaus2.jpeg" alt="Bild 3" class="next">
-            </div>
-        </div>
-        <div class="scrollable-containers">
-            <div class="scrollable-container">
-                <h2>Ferienanlage</h2>
-                <p>Max. 8 Personen</p>
-                <p>Mit Dachterrasse, Küche und Pool</p>
-                <p>150€/Tag</p>
-                <button>Mehr Infos</button>
-                <button onclick="openSecondPage()">Direkt buchen</button>
-            </div>
-            <div class="scrollable-container">
-                <h2>Berghütte</h2>
-                <p>Max. 6 Personen</p>
-                <p>Mit Bergblick, Sauna und Garten</p>
-                <p>200€/Tag</p>
-                <button>Mehr Infos</button>
-                <button onclick="openSecondPage()">Zur zweiten Seite</button>
-            </div>
-            <div class="scrollable-container">
-                <h2>Haus am See</h2>
-                <p>Max. 4 Personen</p>
-                <p>Zentral gelegen, modern ausgestattet</p>
-                <p>100€/Tag</p>
-                <button>Mehr Infos</button>
-                <button onclick="openSecondPage()">Zur zweiten Seite</button>
-            </div>
-        </div>
-    </div>
+
 </div>
 </main>
 

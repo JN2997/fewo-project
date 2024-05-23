@@ -18,7 +18,7 @@
             <a href="index.php"><img src="img/Zeichnung-Flach.png" alt="Logo"></a>
         </div>
         <nav class="menu">
-			<button onclick="window.open('buchungen.php', '_blank');">Meine Buchungen</button>
+			<button onclick="window.open('meine_buchungen.php', '_blank');">Meine Buchungen</button>
 			<button onclick="window.open('unterkuenfte_verwalten.php', '_blank');">Unterkünfte verwalten</button>
 			<button onclick="window.open('profil.php', '_blank');">Profil</button>
 			<button onclick="window.open('logout.php', '_self');">Logout</button>

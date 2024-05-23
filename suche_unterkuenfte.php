@@ -1,5 +1,5 @@
 <?php
-// Überprüfen, ob eine Datenbankverbindung existiert, andernfalls die Verbindungsdatei einbinden
+
 if (!isset($conn)) {
     include 'db_connect.php';
 }
@@ -37,6 +37,7 @@ $price_sql = !empty($price_conditions) ? ' AND (' . implode(' OR ', $price_condi
     <link rel="stylesheet" href="css/main.css">
     <!-- JavaScript Datei einbinden -->
     <script src="js/scale_vorschaubild.js"></script>
+	
 </head>
 <body>
     <h2>Suchergebnisse</h2>

@@ -333,7 +333,7 @@
 			color: #ff0000;
 		}
 
-/* Container */
+/* Container2 */
 
 
 		.container2 {
@@ -356,7 +356,100 @@
 			border-radius: 15px; /* Abgerundete Ecken für das Bild */
 		}
 
+		/* CSS für die Slideshow */
 
-		.container2 .text {
-			flex: 1;
+		/* Der Container für die gesamte Slideshow */
+		.slideshow-container {
+			position: relative; /* Position relativ zu seinem normalen Standort */
+			max-width: 50%; /* Maximale Breite auf 50% des übergeordneten Containers begrenzt */
+			margin: 0 auto 0 0; /* Linker Rand auf 0, rechter Rand auf auto */
+			border: 3px solid #18227c; /* Rahmenfarbe */
+			border-radius: 20px; /* Abgerundete Ecken */
+			overflow: hidden; /* Verhindert, dass überstehende Inhalte sichtbar sind */
+			background-color: #f8f8f8; /* Hintergrundfarbe, um den Container hervorzuheben */
+			height: 500px; /* Feste Höhe, damit sich die Größe des Containers nicht ändert */
+			display: flex; /* Flexbox-Layout, um Inhalt auszurichten */
+			align-items: left; /* Zentriert den Inhalt vertikal */
+			justify-content: center; /* Zentriert den Inhalt horizontal */
+		}
+
+		/* Einzelne Slides innerhalb der Slideshow */
+		.slides {
+			display: none; /* Versteckt die Slides standardmäßig */
+			width: 100%; /* Bilder füllen den Container */
+			height: 100%; /* Bilder füllen den Container */
+			object-fit: cover; /* Bilder werden skaliert, um den Container zu füllen */
+			position: absolute; /* Absolute Positionierung innerhalb des Containers */
+		}
+
+		/* Die "Vorherige" und "Nächste" Pfeile */
+		.prev, .next {
+			cursor: pointer; /* Ändert den Mauszeiger in einen Zeiger, wenn über den Pfeil gefahren wird */
+			position: absolute; /* Absolute Positionierung innerhalb des Containers */
+			top: 50%; /* Positioniert die Pfeile in der Mitte vertikal */
+			width: auto; /* Breite automatisch */
+			padding: 16px; /* Innenabstand für besseren Klickbereich */
+			margin-top: -22px; /* Verschiebt die Pfeile vertikal nach oben, um sie zu zentrieren */
+			color: white; /* Textfarbe der Pfeile */
+			font-weight: bold; /* Fettschrift für die Pfeile */
+			font-size: 26px; /* Schriftgröße der Pfeile */
+			transition: 0.6s ease; /* Weicher Übergangseffekt bei Hover */
+			user-select: none; /* Verhindert die Textauswahl bei Doppelklick */
+		}
+
+		/* Der "Vorherige" Pfeil (linker Pfeil) */
+		.prev {
+			left: 0; /* Positioniert den Pfeil am linken Rand */
+			border-radius: 0 5px 5px 0; /* Abgerundete Ecken für den linken Pfeil */
+		}
+
+		/* Der "Nächste" Pfeil (rechter Pfeil) */
+		.next {
+			right: 0; /* Positioniert den Pfeil am rechten Rand */
+			border-radius: 5px 0 0 5px; /* Abgerundete Ecken für den rechten Pfeil */
+		}
+
+		/* Hover-Effekt für die Pfeile */
+		.prev:hover, .next:hover {
+			background-color: rgba(0, 0, 0, 0.8); /* Hintergrundfarbe beim Hover */
+		}
+
+		/* Der Container für den Lageplan */
+		.lageplan-container {
+			margin-top: 20px; /* Abstand zum oberen Element */
+			border: 3px #18227c; /* Rahmenfarbe */
+			border-radius: 20px; /* Abgerundete Ecken */
+			overflow: hidden; /* Verhindert, dass überstehende Inhalte sichtbar sind */
+			background-color: #f8f8f8; /* Hintergrundfarbe, um den Container hervorzuheben */
+			height: 300px; /* Höhe des Lageplan-Bildes */
+			width: 500px; /* Breite des Lageplan-Bildes */
+			display: flex; /* Flexbox-Layout, um Inhalt auszurichten */
+			align-items: center; /* Zentriert den Inhalt vertikal */
+			justify-content: center; /* Zentriert den Inhalt horizontal */
+		}
+		
+		/*Tabellenstyle für alle Tabellen (egal ob meine_buchungen.php, unterkuenfte_verwalten.php oder alle Admin Tabellen)*/
+		table {
+			width: 80%;                /* Die Tabelle nimmt 80% der Seitenbreite ein */
+			margin: 0 auto;            /* Zentriert die Tabelle horizontal auf der Seite */
+			border-collapse: collapse; /* Entfernt die Abstände zwischen den Tabellenzellen, sodass die Ränder der Zellen zusammengeführt werden */
+		}
+
+		/* Stile für die Tabelle, Tabellenkopfzellen (th) und Tabellenzellen (td) */
+		table, th, td {
+			border: 3px solid #18227c;   /* Setzt einen Rand um die gesamte Tabelle sowie um jede Kopf- und Datenzelle */
+		}
+
+		/* Stile für die Tabellenkopfzellen (th) und Tabellenzellen (td) */
+		th, td {
+			padding: 5px;             /* Fügt innerhalb jeder Zelle einen Abstand von 5 Pixeln ein, um den Inhalt von den Rändern der Zelle zu trennen */
+			text-align: left;         /* Richtet den Text innerhalb jeder Zelle linksbündig aus */
+			height: 30px;             /* Setzt die Höhe jeder Zelle auf 30 Pixel, um eine konsistente Zeilenhöhe zu gewährleisten */
+			overflow: hidden;         /* Verhindert, dass der Inhalt die festgelegte Höhe überschreitet */
+			white-space: nowrap;      /* Verhindert den automatischen Zeilenumbruch innerhalb der Zellen */
+		}
+
+		/* Zusätzlicher Stil nur für die Tabellenkopfzellen (th) */
+		th {
+			background-color: #f2f2f2; /* Setzt den Hintergrund der Tabellenkopfzellen auf ein hellgraues Farbschema */
 		}

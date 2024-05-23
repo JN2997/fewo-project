@@ -35,7 +35,7 @@ session_start();
                 <?php switch ($_SESSION['role']): 
                     case "Mieter": ?>
                         <!-- Menü für Mieter -->
-                        <button onclick="window.open('meineBuchungen.php', '_blank');">Meine Buchungen</button>
+                        <button onclick="window.open('meine_buchungen.php', '_blank');">Meine Buchungen</button>
                         <button onclick="window.open('profil.php', '_blank');">Profil</button>
                         <button onclick="window.open('logout.php', '_self');">Logout</button>
                         <?php break;
