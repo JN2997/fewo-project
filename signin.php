@@ -24,7 +24,7 @@
 			header("Location: index.php");
         } else 
 		{
-            echo "Falsches Passwort!";
+            echo "Passwort oder Benutzername falsch";
         }
     } else 
 	{

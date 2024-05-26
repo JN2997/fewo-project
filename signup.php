@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Überprüfen, ob die beiden Passwörter übereinstimmen
     if ($password !== $confirm_password) {
-        echo "Die Passwörter stimmen nicht überein.";
+        echo "Passwörter stimmen nich überein.";
         exit;
     }
 

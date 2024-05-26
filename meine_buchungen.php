@@ -1,6 +1,8 @@
 <?php
 session_start();
+include 'auth_nav.php';
 require_once 'db_connect.php'; // Diese Datei stellt die Verbindung zur Datenbank her
+exclude_user_Roles (['guest', 'Admin'], 'index.php');
 
 // Angenommen, die User-ID ist in der Session gespeichert
 $user_id = $_SESSION['USER_ID'];
@@ -43,15 +45,16 @@ $result = $stmt->get_result();
             <a href="index.php"><img src="img/Zeichnung-Flach.png" alt="Logo"></a>
         </div>
         <nav class="menu">
-			<button onclick="window.open('meine_buchungen.php', '_blank');">Meine Buchungen</button>
-			<button onclick="window.open('profil.php', '_blank');">Profil</button>
-			<button onclick="window.open('logout.php', '_self');">Logout</button>
+			<?php display_menu();?>
         </nav>
     </header>
 <body>
-    <h1>Meine Buchungen</h1>
+<main>
+    <!-- Überprüfen, ob es Buchungen gibt -->
     <?php if ($result->num_rows > 0): ?>
+        <!-- Tabelle für Buchungen anzeigen -->
         <table>
+			<caption><h1>Meine Buchungen</h1></caption> 
             <thead>
                 <tr>
                     <th>Buchungs-ID</th>
@@ -63,6 +66,7 @@ $result = $stmt->get_result();
                 </tr>
             </thead>
             <tbody>
+                <!-- Schleife durch alle Buchungen und anzeigen -->
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($row['BUCHUNG_ID']); ?></td>
@@ -76,6 +80,7 @@ $result = $stmt->get_result();
             </tbody>
         </table>
     <?php else: ?>
+        <!-- Nachricht anzeigen, wenn keine Buchungen vorhanden sind -->
         <p style="text-align: center;">Sie haben Ihren Traumurlaub wohl noch nicht gebucht...</p>
     <?php endif; ?>
 
@@ -84,5 +89,6 @@ $result = $stmt->get_result();
     $stmt->close();
     $conn->close();
     ?>
+</main>
 </body>
 </html>

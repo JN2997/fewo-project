@@ -10,7 +10,7 @@
 			box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Fügt einen leichten Schatten */
 			background: 
 			linear-gradient(to left, #FFFFFF 65%, #E5F6FB 95%),
-            linear-gradient(to right, #FFFFFF 65%, #E5F6FB 95%);
+         
             color: #262626;
         }
 		footer {
@@ -64,10 +64,11 @@
             color: #262626;
         }
 		/* Stil für alle Überschriften */
-			h1, h2, h3, h4, h5, h6 {
-				font-weight: bold; /* Macht die Schrift fett */
-				color: #18227c; /* Setzt die Farbe auf Dunkelblau */
-			}
+		h1, h2, h3, h4, h5, h6 {
+			font-weight: bold; /* Macht die Schrift fett */
+			color: #18227c; /* Setzt die Farbe auf Dunkelblau */
+		}
+		
         main {
             background-color: transparent; /* Ermöglicht die Sichtbarkeit des Hintergrund-Gradients */
             grid-column: 2 / 3;
@@ -76,7 +77,7 @@
 			grid-column: 1 / 2;
 			display: flex;
 			flex-direction: column;
-			align-items: flex-start; /* Linksbündige Ausrichtung der Inhalte */
+			align-items: center; /* Linksbündige Ausrichtung der Inhalte */
 			justify-content: start;
 		/*	height: 100vh;  Volle Höhe */
 			position: sticky;
@@ -85,14 +86,7 @@
 			background-color: transparent; /* Hintergrundfarbe */
 			box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 		}
-		/*.sidebar-right{
-            padding: 50px;
-			margin-right: 40px;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            background-color: transparent; /* Sorgt dafür, dass der Gradient sichtbar bleibt 
-        }*/
+
 		.popupanmelden, .popupregistrieren {
 			position: relative;
 			z-index: 500; /* niedriger als der Header, aber hoch genug für Überlagerungszwecke */
@@ -121,6 +115,21 @@
 			border-radius: 20px; /* Abrunden der Ecken */
 			box-sizing: border-box; /* Box-Sizing auf border-box umstellen */
 
+		}
+		
+		textarea {
+			width: 100%; /* Setzt die Breite auf die volle Containerbreite */
+			padding: 16px 20px; /* Erhöht die Polsterung für größere Eingabefelder */
+			margin-bottom: 10px; /* Setzt den Abstand zwischen den Feldern */
+			display: block; /* Block-Display, um die volle Breite zu nutzen */
+			border: 1px solid #ccc; /* Feinere Rahmenlinie */
+			border-radius: 20px; /* Abrunden der Ecken */
+			box-sizing: border-box; /* Box-Sizing auf border-box umstellen */
+			resize: vertical; /* Ermöglicht vertikales Vergrößern */
+			font-family: Arial, sans-serif; /* Stellt sicher, dass dieselbe Schriftart verwendet wird */
+			font-size: 16px; /* Einheitliche Schriftgröße */
+			line-height: 1.5; /* Verbessert die Lesbarkeit */
+			height: 150px; /* Setzt die Standardhöhe */
 		}
 		
 		.container-suche {
@@ -156,7 +165,7 @@
 
 		select, button {
 			padding: 12px 20px; /* Mehr Padding für ein besseres Aussehen */
-			width: 100%; /* Jedes Feld nimmt die volle Breite des Containers ein */
+			width: 90%; /* Jedes Feld nimmt die volle Breite des Containers ein */
 			border: 3px solid #18227c; /* Fügt einen subtilen Rahmen hinzu */
 			border-radius: 20px; /* Abrundung der Ecken */
 			cursor: pointer;
@@ -176,7 +185,6 @@
 		
 		.container-vermieteransprache {
 			text-align: center;
-			
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -190,47 +198,6 @@
 			margin: 0 0 1em 0; /* Abstand zwischen den Absätzen */
 		}
 
-		.carousel-images {
-			display: flex;
-			justify-content: center; /* Zentriert die Bilder horizontal */
-			gap: 20px; /* Abstand zwischen den Bildern */
-			margin-bottom: 20px; /* Abstand zwischen den Bildern und dem Text darunter */
-		}
-
-		.carousel-images img {
-			width: 33%; /* Breite jedes Bildes */
-			transition: filter 0.5s ease, transform 0.5s ease;
-		}
-
-		.carousel-images img.previous,
-		.carousel-images img.next {
-			filter: blur(4px);
-			transform: scale(0.8); /* Verkleinert und macht die nicht-aktiven Bilder unscharf */
-		}
-
-		.carousel-images img.active {
-			filter: none;
-			transform: scale(1); /* Stellt sicher, dass das aktive Bild voll sichtbar und scharf ist */
-		}
-
-		.scrollable-containers {
-			display: flex;
-			justify-content: space-around; /* Gleichmäßiger Abstand zwischen den inneren Containern */
-			margin-top: 20px; /* Abstand zwischen Karussell und diesen Containern */
-		}
-
-		.scrollable-container {
-			flex: 1;
-			margin: 10px; /* Fügt Abstand zwischen den scrollable Containern hinzu */
-			padding: 20px;
-			border: 1px solid #ccc;
-			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-			transition: box-shadow 0.3s ease, transform 0.3s ease; /* Weiche Übergänge für Schatten und Transformation */
-		}
-		.scrollable-container:hover {
-			transform: scale(1.03); /* Leichte Vergrößerung */
-			box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Intensivierung des Schattens */
-		}
 		.form-container {
 			display: flex; /* Verwendet Flexbox für eine flexible Layout-Gestaltung */
 			flex-direction: column; /* Stapelt Elemente vertikal */
@@ -252,6 +219,7 @@
 			cursor: pointer; /* Cursor als Zeiger */
 			border-radius: 20px; /* Abrundung der Ecken */
 			transition: background-color 0.3s, color 0.3s; /* Weiche Übergänge für Farbwechsel */
+			width: auto;
 		}
 
 		/* Hover-Stil für Buttons */
@@ -267,7 +235,7 @@
 		button.cancel:hover {
 			background-color: #666; /* Dunkelgrau beim Hovern */
 		}
-		*/
+		
 		/* Stile für das Haus Add Formular */
 		.form-horizontal {
 			display: flex;
@@ -333,8 +301,7 @@
 			color: #ff0000;
 		}
 
-/* Container2 */
-
+/* Container2 für dynamische Ferienhäuseranzeige */
 
 		.container2 {
 			display: flex;
@@ -431,7 +398,7 @@
 		/*Tabellenstyle für alle Tabellen (egal ob meine_buchungen.php, unterkuenfte_verwalten.php oder alle Admin Tabellen)*/
 		table {
 			width: 80%;                /* Die Tabelle nimmt 80% der Seitenbreite ein */
-			margin: 0 auto;            /* Zentriert die Tabelle horizontal auf der Seite */
+			margin: auto;            /* Zentriert die Tabelle horizontal auf der Seite */
 			border-collapse: collapse; /* Entfernt die Abstände zwischen den Tabellenzellen, sodass die Ränder der Zellen zusammengeführt werden */
 		}
 
@@ -453,3 +420,16 @@
 		th {
 			background-color: #f2f2f2; /* Setzt den Hintergrund der Tabellenkopfzellen auf ein hellgraues Farbschema */
 		}
+		caption {
+			caption-side: top;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		.welcome-message {
+			text-align: center; 
+			color: #18227c;
+		}
+
+
+
+

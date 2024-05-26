@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'auth_nav.php';
 
 if (!isset($_SESSION['buchung_details'])) {
     header('Location: index.php');
@@ -23,7 +24,7 @@ $details = $_SESSION['buchung_details'];
             <a href="index.php"><img src="img/Zeichnung-Flach.png" alt="Logo"></a>
         </div>
         <nav class="menu">
-            <button onclick="window.location.href='index.php'">Startseite</button>
+            <?php display_menu();?>
         </nav>
     </header>
     <main>
@@ -31,9 +32,10 @@ $details = $_SESSION['buchung_details'];
         <p>Vielen Dank für Ihre Buchung!</p>
         <ul>
             <li>Haus ID: <?php echo htmlspecialchars($details['haus_id']); ?></li>
-            <li>Anreise: <?php echo htmlspecialchars($details['anreise']); ?></li>
-            <li>Abreise: <?php echo htmlspecialchars($details['abreise']); ?></li>
-            <li>Gesamtpreis: <?php echo htmlspecialchars($details['gesamtpreis']); ?> €</li>
+            <li>Anreise am: <?php echo htmlspecialchars($details['anreise']); ?></li>
+            <li>Abreise am: <?php echo htmlspecialchars($details['abreise']); ?></li>
+            <li>Gesamtpreis: <?php echo htmlspecialchars($details['gesamtpreis']); ?> EUR</li>
+			<li>Die Rechnung ist vor Ort zu begleichen.</li>
         </ul>
     </main>
     <footer>

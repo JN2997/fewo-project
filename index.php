@@ -1,24 +1,9 @@
 <?php 
 session_start(); 
 include 'db_connect.php';
-
-// Überprüfung, ob der Benutzer bereits eingeloggt ist
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SESSION['role'])) 
-{
-    // Weiterleitung basierend auf der Rolle des Benutzers
-    switch ($_SESSION['role']) {
-        case 'Mieter':
-            header('Location: mieter_start.php');
-            exit;
-        case 'Vermieter':
-            header('Location: vermieter_start.php');
-            exit;
-        case 'Admin':
-            header('Location: admin_start.php');
-            exit;
-		}
-}
+include 'auth_nav.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -29,8 +14,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
 	<link rel="stylesheet" href="css/main.css">
 		<!-- JavaScript Aufrufe -->
     <script src="js/popup.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/carousel.js"></script>
 </head>
 <body>
     <header>
@@ -38,9 +21,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
             <a href="index.php"><img src="img/Zeichnung-Flach.png" alt="Logo"></a>
         </div>
         <nav class="menu">
-			<button onclick="window.open('unterkunft_vermieten_unlogged.php', '_blank');">Unterkunft vermieten</button>
-			<button onclick="openPopupanmelden()">Anmelden</button>
-            <button onclick="openPopupregistrieren()">Registrieren</button>
+			<?php display_menu(); ?>
         </nav>
     </header>
 <!-- Hauptinhalt -->
@@ -54,6 +35,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
     <?php endif; ?>
 	
 	<div class="container-suche">
+        <?php if (get_user_role() === 'Admin'): ?>
+            <h2>Herzlich Willkommen im Admin-Bereich!</h2>
+        <?php else: ?>
 		<!-- Suchleiste -->
 		<form class="search-form" action="fewosuche.php" method="GET">
 			<select id="personenanzahl" name="personenanzahl" required>
@@ -90,6 +74,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
 
 			<button type="submit">Ferienhaus Suchen</button>
 		</form>
+		<?php endif; ?>
 	</div>
 
 </div>
@@ -98,52 +83,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SE
 <footer>
   <p>Kontaktieren Sie uns für weitere Informationen:</p>
   <p>Telefon: 123-456-789</p>
-  <p>Email: info@IhrFerienDomizil.com</p>
+  <p>Email: <a href="mailto:info@IhrFerienDomizil.com">info@IhrFerienDomizil.com</a></p>
 </footer>
 
-
-        <!-- Das Anmelde-Popup -->
-    <div id="popupanmelden" class="popupanmelden" style="<?php echo isset($_SESSION['registration_success']) ? 'display:block;' : 'display:none;'; ?>">
-        <form action="signin.php" class="form-container" method="post">
-            <h1>Anmeldung</h1>
-            <H3><?php if (isset($_SESSION['registration_success'])): ?>
-                <p style="color:green;"><?php echo $_SESSION['registration_success']; unset($_SESSION['registration_success']); ?></p>
-            <?php endif; ?></h3>
-            <label for="email"></label>
-            <input type="text" placeholder="Email" name="email" required>
-            <label for="psw"></label>
-            <input type="password" placeholder="Passwort" name="psw" required>
-            <button type="submit" class="btn">Login</button>
-            <button type="button" class="btn cancel" onclick="closePopup()">Abbrechen</button>
-        </form>
-    </div>
-	    <!-- Das Popup -->
-    <div id="popupregistrieren" class="popupregistrieren">
-        <form action="signup.php" class="form-container" method="post">
-            <h1>Registrierung</h1>
-			<label for="forname"></label>
-            <input type="text" placeholder="Vorname angeben" name="forname" required>
-			
-			<label for="surname"></label>
-            <input type="text" placeholder="Nachname angeben" name="surname" required>
-			
-            <label for="email"></label>
-            <input type="text" placeholder="E-Mail eingeben" name="email" required>
-			
-            <label for="psw"></label>
-            <input type="password" placeholder="Passwort eingeben" name="psw" required>
-			
-			<label for="confirm_psw"></label>
-			<input type="password" placeholder="Passwort wiederholen" name="confirm_psw" required>
-			
-			<label for="is_vermieter">Ich möchte mich auch als Vermieter registrieren:</label>
-			<input type="checkbox" id="is_vermieter" name="is_vermieter">
-			
-            <button type="submit" class="btn">Registrierung abschicken</button>
-            <button type="button" class="btn cancel" onclick="closePopup()">Abbrechen</button>
-        </form>
-    </div>
-</div>
 
 </body>
 </html>
