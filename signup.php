@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST['email']);
     $password = $_POST['psw'];
     $confirm_password = $_POST['confirm_psw'];
+	$redirect_url = $_POST['redirect_url'];
 
     // Überprüfen, ob die beiden Passwörter übereinstimmen
     if ($password !== $confirm_password) {
@@ -29,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($conn->query($sql) === TRUE) {
 			// Setzt eine Session-Variable, um auf der Indexseite eine Nachricht anzuzeigen
 			$_SESSION['registration_success'] = 'Sie haben sich erfolgreich registriert und können sich jetzt einloggen.';
-			header("Location: index.php");
+			header("Location: " . $redirect_url));
 			
 		} else {
 			echo "Fehler: " . $sql . "<br>" . $conn->error;
