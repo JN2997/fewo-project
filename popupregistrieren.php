@@ -15,6 +15,7 @@
         <input type="password" placeholder="Passwort wiederholen" name="confirm_psw" required>
         <label for="is_vermieter">Ich möchte mich auch als Vermieter registrieren:</label>
         <input type="checkbox" id="is_vermieter" name="is_vermieter">
+        <input type="hidden" name="redirect_url" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
         <button type="submit" class="btn">Registrierung abschicken</button>
         <button type="button" class="btn cancel" onclick="closePopup('popupregistrieren')">Abbrechen</button>
     </form>
