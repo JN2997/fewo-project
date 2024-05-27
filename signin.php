@@ -5,6 +5,7 @@
 	 // Benutzereingaben bereinigen
     $email = $conn->real_escape_string($_POST['email']);
     $password = $_POST['psw'];
+	$redirect_url = $_POST['redirect_url'];
 
     // SQL-Query zum Finden des Benutzers
     $sql = "SELECT USER_ID, email, password, role FROM users WHERE email = '$email'";
@@ -21,7 +22,7 @@
             $_SESSION['email'] = $email;
             $_SESSION['USER_ID'] = $row['USER_ID'];
 			$_SESSION['role'] = $row['role'];
-			header("Location: index.php");
+			header("Location: " . $redirect_url));
         } else 
 		{
             echo "Passwort oder Benutzername falsch";
