@@ -10,8 +10,10 @@
         <input type="text" placeholder="Email" name="email" required>
         <label for="psw"></label>
         <input type="password" placeholder="Passwort" name="psw" required>
+        <input type="hidden" name="redirect_url" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
         <button type="submit" class="btn">Login</button>
         <button type="button" class="btn cancel" onclick="closePopup()">Abbrechen</button>
     </form>
 </div>
+
 
