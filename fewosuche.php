@@ -59,7 +59,8 @@ include 'auth_nav.php';
 				</select>
 				<br><br>
 						<!-- Weitere Filteroptionen ohne initiale Werte -->
-						<h4>Preise</h4>
+						<h4>Preise</h4>	<!--Nach dem aktualisieren wird geprüft ob der filter gesetzt ist oder ein leeres Array ausgegeben wird, hierzu wird "??" verwendet, was die Funktion hat, den ersten Wert, der nicht NULL ist zu nehmen.-->
+								<!-- Danach wird geprüft ob der Wert angeklickt wurde oder nicht und entsprechend gesetzt bzw. beibehalten -->
 						<label><input type="checkbox" name="filter[price1]" value="price1" <?php echo in_array("price1", $_GET['filter'] ?? []) ? 'checked' : ''; ?>>max. 100€ pro Nacht</label><br>
 						<label><input type="checkbox" name="filter[price2]" value="price2" <?php echo in_array("price2", $_GET['filter'] ?? []) ? 'checked' : ''; ?>>max. 200€ pro Nacht</label><br>
 						<label><input type="checkbox" name="filter[price3]" value="price3" <?php echo in_array("price3", $_GET['filter'] ?? []) ? 'checked' : ''; ?>>max. 300€ pro Nacht</label><br>
