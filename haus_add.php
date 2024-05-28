@@ -1,18 +1,18 @@
 <?php 
-include 'db_connect.php';
+include 'db_connect.php'; 
 
-$sql = "SELECT tag_wert FROM tags"; // Adjust this query to your table structure
+// SQL-Abfrage zum Abrufen aller Tags aus der Tabelle 'tags'
+$sql = "SELECT tag_wert FROM tags"; 
 $result = $conn->query($sql);
 
-$tags = array();
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $tags[] = $row["tag_wert"];
-
+$tags = array(); // Initialisierung eines leeren Arrays für die Tags
+if ($result->num_rows > 0) { // Überprüfen, ob Ergebnisse vorhanden sind
+    while($row = $result->fetch_assoc()) { // Alle Ergebnisse durchlaufen
+        $tags[] = $row["tag_wert"]; // Jeden Tag-Wert in das Array $tags hinzufügen
     }
 }
 
-$conn->close();
+$conn->close(); 
 ?>
 
 <!DOCTYPE html>
@@ -21,70 +21,66 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ihr Ferien Domizil</title>
-	
-		<!-- CSS Aufrufe -->
-	<link rel="stylesheet" href="css/main.css">
-	
-		<!-- JavaScript Aufrufe -->
-	<script>
-		const dbTags = <?php echo json_encode($tags); ?>; // Konvertiert das PHP-Array $tags in ein JSON-Format und speichert es in einer JavaScript-Variablen dbTags.
-		console.log(dbTags); // Überprüfen, ob die Tags korrekt übergeben werden
-	</script>
-	
-	<script src="js/tags_add_haus.js" defer></script>
+    <!-- CSS-Aufrufe -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- JavaScript-Aufrufe -->
+    <script>
+        //Skript lohnt nicht wegen der kürze auszulagern und muss hier stattfinden, da hier auch das Array erstellt wird aus der DB
+        const dbTags = <?php echo json_encode($tags); ?>;// Konvertiert das PHP-Array $tags in ein JSON-Format und speichert es in einer JavaScript-Variablen dbTag
+    </script>
+    <script src="js/tags_add_haus.js" defer></script> 
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    include 'db_connect.php';
+    include 'db_connect.php'; // Erneutes Einbinden der Datenbankverbindung, falls ein Formular gesendet wurde
 
+    // Funktion zum Hochladen eines Bildes
     function upload_image($file, $haus_id, $img_typ, $conn) {
-        $target_dir = "img/unterkuenfte/";
-        $target_file = $target_dir . basename($file["name"]);
+        $target_dir = "img/unterkuenfte/"; // Zielverzeichnis Bild
+        $target_file = $target_dir . basename($file["name"]); // Zielpfad  Bild
         $upload_ok = 1;
-        $image_file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $image_file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); // Ermitteln des Dateityps
 
-        $check = getimagesize($file["tmp_name"]);
+        $check = getimagesize($file["tmp_name"]); // Überprüfen, ob die Datei ein Bild ist
         if ($check === false) {
-            echo "Datei ist kein Bild.";
+            echo "Die Datei ist kein Bild.";
+            $upload_ok = 0; //Fehlerindikator wird über die nächsten If-Statements verwendet, wurde zunächst auf 1 gesetzt und wenn er 0 gesetzt wird, wird das Bild am Ende nicht hochgeladen
+        }
+
+        if (file_exists($target_file)) { // Überprüfen, ob die Datei bereits existiert
+            echo "Das Bild existiert bereits.";
             $upload_ok = 0;
         }
 
-        if (file_exists($target_file)) {
-            echo "Entschuldigung, die Datei existiert bereits.";
+        if ($file["size"] > 10000000) { // Überprüfen, ob die Datei größer als 10MB ist
+            echo "Das Bild ist zu groß.";
             $upload_ok = 0;
         }
 
-        if ($file["size"] > 5000000) { // 5MB Limit
-            echo "Entschuldigung, Ihre Datei ist zu groß.";
-            $upload_ok = 0;
-        }
 
-        if ($image_file_type != "jpg" && $image_file_type != "png" && $image_file_type != "jpeg" && $image_file_type != "gif") {
-            echo "Entschuldigung, nur JPG, JPEG, PNG & GIF Dateien sind erlaubt.";
+        if ($image_file_type != "jpg" && $image_file_type != "png" && $image_file_type != "jpeg") { //Prüfen der Dateitypen zu den erlaubten zählt
+            echo "Nur JPG, JPEG & PNG Dateien sind erlaubt.";
             $upload_ok = 0;
         }
 
         if ($upload_ok == 0) {
-            echo "Entschuldigung, Ihre Datei wurde nicht hochgeladen.";
+            echo "Ihre Datei wurde nicht hochgeladen.";
         } else {
+            // Verschieben der hochgeladenen Datei in das Zielverzeichnis
             if (move_uploaded_file($file["tmp_name"], $target_file)) {
+                // Einfügen des Bildpfads und der Infos in die Datenbank
                 $stmt = $conn->prepare("INSERT INTO img (HAUS_ID, img_typ, img_url) VALUES (?, ?, ?)");
                 $stmt->bind_param("iss", $haus_id, $img_typ, $target_file);
                 $stmt->execute();
                 $stmt->close();
             } else {
-                echo "Entschuldigung, es gab einen Fehler beim Hochladen Ihrer Datei.";
+                echo "Es gab einen Fehler beim Hochladen Ihrer Datei.";
             }
         }
     }
 
-    if (!isset($_SESSION['USER_ID'])) {
-        echo "Sie müssen eingeloggt sein, um diese Aktion auszuführen.";
-        exit;
-    }
-
+    // Abrufen der Benutzereingaben aus dem Formular
     $user_id = $_SESSION['USER_ID'];
-
     $name = $_POST['name'];
     $adresse = $_POST['adresse'];
     $land = $_POST['land'];
@@ -92,19 +88,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $personen = $_POST['personen'];
     $preis = $_POST['preis'];
 
+    // Einfügen der Hausdaten in die Tabelle haus
     $stmt = $conn->prepare("INSERT INTO haus (name, adresse, land, beschreibung, personen, preis, USER_ID) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssiii", $name, $adresse, $land, $beschreibung, $personen, $preis, $user_id);
+    $stmt->bind_param("ssssidi", $name, $adresse, $land, $beschreibung, $personen, $preis, $user_id);
     if ($stmt->execute()) {
-        $haus_id = $stmt->insert_id;
+        $haus_id = $stmt->insert_id; // Abrufen der ID des neu eingefügten Hauses
 
+        // Hochladen der Bilder für das Haus
         upload_image($_FILES['vorschaubild'], $haus_id, 'Vorschaubild', $conn);
         upload_image($_FILES['lageplan'], $haus_id, 'Lageplan', $conn);
         foreach ($_FILES['aussenansicht']['tmp_name'] as $key => $tmp_name) {
             $file_array = array(
                 'name' => $_FILES['aussenansicht']['name'][$key],
-                'tmp_name' => $_FILES['aussenansicht']['tmp_name'][$key],
+                'tmp_name' => $_FILES['aussenansicht']['tmp_name'][$key], //temporärer Dateiname zum Abspeichern
                 'size' => $_FILES['aussenansicht']['size'][$key],
-                'error' => $_FILES['aussenansicht']['error'][$key],
                 'type' => $_FILES['aussenansicht']['type'][$key],
             );
             upload_image($file_array, $haus_id, 'Außenansicht', $conn);
@@ -114,15 +111,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'name' => $_FILES['innenansicht']['name'][$key],
                 'tmp_name' => $_FILES['innenansicht']['tmp_name'][$key],
                 'size' => $_FILES['innenansicht']['size'][$key],
-                'error' => $_FILES['innenansicht']['error'][$key],
                 'type' => $_FILES['innenansicht']['type'][$key],
             );
             upload_image($file_array, $haus_id, 'Innenansicht', $conn);
         }
 
+        // Verarbeiten der Tags für das Haus
         $tags = explode(',', $_POST['tags']);
         foreach ($tags as $tag) {
-            $tag = trim($tag);
             if (!empty($tag)) {
                 $stmt = $conn->prepare("SELECT TAG_ID FROM tags WHERE tag_wert = ?");
                 $stmt->bind_param("s", $tag);
@@ -140,17 +136,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
 
+        // Erfolgsnachricht anzeigen und Umleitung
         echo "<script>alert('Das Haus wurde erfolgreich hinzugefügt.'); window.location.href='unterkuenfte_verwalten.php';</script>";
     } else {
+        // Fehlermeldung anzeigen und Umleitung
         echo "<script>alert('Fehler beim Hinzufügen des Hauses.'); window.location.href='unterkuenfte_verwalten.php';</script>";
     }
-    $stmt->close();
-
-    $conn->close();
+    $stmt->close(); // Schließen des Prepared Statements
+    $conn->close(); // Schließen der Datenbankverbindung
 }
 ?>
 
 <div class="add_haus">
+    <!-- Formular zum Hinzufügen eines neuen Hauses -->
     <form action="unterkuenfte_verwalten.php?page=add" method="post" enctype="multipart/form-data" class="form-horizontal">
         <div class="form-group">
             <input type="text" name="name" placeholder="Name des Ferienhauses" required>

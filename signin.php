@@ -22,7 +22,7 @@
             $_SESSION['email'] = $email;
             $_SESSION['USER_ID'] = $row['USER_ID'];
 			$_SESSION['role'] = $row['role'];
-			header("Location: " . $redirect_url));
+			header("Location: " . $redirect_url);
         } else 
 		{
             echo "Passwort oder Benutzername falsch";

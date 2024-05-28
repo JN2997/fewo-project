@@ -80,7 +80,7 @@ $morgen = date('Y-m-d', strtotime('+1 day'));
     <footer>
         <p>Kontaktieren Sie uns für weitere Informationen:</p> 
         <p>Telefon: 123-456-789</p>
-        <p>Email: info@IhrFerienDomizil.com</p>
+         <p>Email: <a href="mailto:info@IhrFerienDomizil.com">info@IhrFerienDomizil.com</a></p>
     </footer>
 </body>
 </html>

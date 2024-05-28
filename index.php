@@ -38,6 +38,9 @@ include 'auth_nav.php';
         <?php if (get_user_role() === 'Admin'): ?>
             <h2>Herzlich Willkommen im Admin-Bereich!</h2>
         <?php else: ?>
+
+
+
 		<!-- Suchleiste -->
 		<form class="search-form" action="fewosuche.php" method="GET">
 			<select id="personenanzahl" name="personenanzahl" required>
@@ -56,30 +59,42 @@ include 'auth_nav.php';
 				<option value="deutschland">Deutschland</option>
 				<option value="oesterreich">Österreich</option>
 				<option value="schweiz">Schweiz</option>
-				<option value="italien">Italien</option>
-				<option value="spanien">Spanien</option>
-				<option value="frankreich">Frankreich</option>
 				<option value="schweden">Schweden</option>
-				<option value="niederlande">Niederlande</option>
-				<option value="kroatien">Kroatien</option>
-				<option value="tschechien">Tschechien</option>
 				<option value="finnland">Finnland</option>
 				<option value="england">England</option>
-				<option value="portugal">Portugal</option>
-				<option value="polen">Polen</option>
 				<option value="daenemark">Dänemark</option>
 				<option value="norwegen">Norwegen</option>
-				<option value="ungarn">Ungarn</option>
 			</select>
 
 			<button type="submit">Ferienhaus Suchen</button>
 		</form>
 		<?php endif; ?>
 	</div>
+		<div class="c-heroImageGrid">
+		<div class="container">
+				<div class="column"></div>
+				<div class="column">
+					<div class="row"></div>
+					<div class="row">
+						<div>
+							<div class="text">
 
-</div>
+								<p><BR>
+								Das Leben ist eine Reise. Erkunden und genießen Sie Europa und all seine Facetten. <BR><BR> Auf unserer Webseite finden Sie Ihr perfektes Feriendomizil!
+								</p>
+							</div>
+						</div>
+						<div></div>
+					</div>
+					<div class="row">
+					</div>
+				</div>
+			</div>
+			<div class="separator">
+		</div>
+		
+
 </main>
-
 <footer>
   <p>Kontaktieren Sie uns für weitere Informationen:</p>
   <p>Telefon: 123-456-789</p>

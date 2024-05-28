@@ -2,23 +2,23 @@
 
 // Nutzung des Skripts: 
 // Einbinden des Codes mit "include 'auth_nav.php';" 
-// im Header einfach mit "< ?php display_menu(); ? >" 
-// Nutzer können von Seiten ausgeschlossen werden mit "exclude_user_Roles (['Vermieter', 'guest', 'Mieter', 'Admin'], 'index.php');"
+// im Header einfach mit "<?php display_menu(); ? >"
+// Nutzer können von Seiten ausgeschlossen werden mit "exclude_user_roles(['Vermieter', 'guest', 'Mieter', 'Admin'], 'index.php');"
 // Es können auch andere Seiten angegeben werden, aber meistens wird es die index.php sein
-
 
 // Funktion zur Überprüfung der Benutzerrolle
 function get_user_role() {
+    // Überprüfen, ob der Benutzer eingeloggt ist und eine Rolle zugewiesen wurde
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-        return $_SESSION['role'] ?? 'guest';
+        return $_SESSION['role'] ?? 'guest'; // Rückgabe der Benutzerrolle oder 'guest' falls keine Rolle vorhanden
     } else {
-        return 'guest';
+        return 'guest'; // Rückgabe der Rolle 'guest' wenn nicht eingeloggt
     }
 }
 
 // Menü-Anzeige basierend auf der Benutzerrolle
 function display_menu() {
-    $role = get_user_role();
+    $role = get_user_role(); // Benutzerrolle abrufen
     
     if ($role === 'guest') {
         echo '
@@ -27,8 +27,8 @@ function display_menu() {
         <button onclick="openPopupanmelden()">Anmelden</button>
         <button onclick="openPopupregistrieren()">Registrieren</button>
         ';
-		include 'popupanmelden.php';
-        include 'popupregistrieren.php';
+        include 'popupanmelden.php'; // Einbinden des Anmelde-Popups
+        include 'popupregistrieren.php'; // Einbinden des Registrierungs-Popups
     } else {
         switch ($role) {
             case 'Mieter':
@@ -50,13 +50,13 @@ function display_menu() {
                 break;
             case 'Admin':
                 echo '
-				<!-- Menü für Admin -->
-				<button onclick="window.open(\'verwaltung_user.php\', \'_blank\');">User-Verwaltung</button>
-				<button onclick="window.open(\'verwaltung_haeuser.php\', \'_blank\');">Haus-Verwaltung</button>
+                <!-- Menü für Admin -->
+                <button onclick="window.open(\'verwaltung_user.php\', \'_blank\');">User-Verwaltung</button>
+                <button onclick="window.open(\'verwaltung_haeuser.php\', \'_blank\');">Haus-Verwaltung</button>
                 <button onclick="window.open(\'verwaltung_buchungen.php\', \'_blank\');">Buchungs-Verwaltung</button>
                 <button onclick="window.open(\'verwaltung_tags.php\', \'_blank\');">Tag-Verwaltung</button>
                 <button onclick="window.open(\'logout.php\', \'_self\');">Logout</button>
-				';
+                ';
                 break;
         }
     }
@@ -64,10 +64,11 @@ function display_menu() {
 
 // Funktion zum Ausschließen von bestimmten Benutzern auf bestimmten Seiten
 function exclude_user_roles($excluded_roles, $redirect_page = 'index.php') {
-    $role = get_user_role();
+    $role = get_user_role(); // Benutzerrolle abrufen
+    // Überprüfen, ob die Benutzerrolle in der Liste der ausgeschlossenen Rollen ist
     if (in_array($role, $excluded_roles)) {
-        header("Location: $redirect_page");
-        exit();
+        header("Location: $redirect_page"); // Umleiten auf die angegebene Seite
+        exit(); 
     }
 }
-
+?>

@@ -1,10 +1,10 @@
 <?php
 session_start();
 include 'auth_nav.php';
-require_once 'db_connect.php'; // Diese Datei stellt die Verbindung zur Datenbank her
+require_once 'db_connect.php'; 
 exclude_user_Roles (['guest', 'Admin'], 'index.php');
 
-// Angenommen, die User-ID ist in der Session gespeichert
+// user_id wird aus der SESSION genommen, an eine Variable gebunden und später für die Ausgabe der dazugehörigen Buchungen genutzt
 $user_id = $_SESSION['USER_ID'];
 
 $query = "
@@ -23,6 +23,8 @@ $query = "
         b.HAUS_ID = h.HAUS_ID 
     WHERE 
         b.USER_ID = ?
+	ORDER BY 
+		b.arrival ASC
 ";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $user_id);
@@ -90,5 +92,10 @@ $result = $stmt->get_result();
     $conn->close();
     ?>
 </main>
+    <footer>
+        <p>Kontaktieren Sie uns für weitere Informationen:</p>
+        <p>Telefon: 123-456-789</p>
+        <p>Email: <a href="mailto:info@IhrFerienDomizil.com">info@IhrFerienDomizil.com</a></p>
+    </footer>
 </body>
 </html>

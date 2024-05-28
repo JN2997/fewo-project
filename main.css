@@ -1,435 +1,567 @@
-        header {
-			grid-column: 1 / -1; /* Header über die gesamte Breite */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-			position: sticky; /* Macht den Header sticky */
-			top: 0; /* Setzt den Header an den oberen Rand des Viewports */
-			z-index: 1000; /* Stellt sicher, dass der Header über anderen Inhalten liegt */
-			box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Fügt einen leichten Schatten */
-			background: 
-			linear-gradient(to left, #FFFFFF 65%, #E5F6FB 95%),
-         
-            color: #262626;
-        }
-		footer {
-			background-color: transparent; /* Hintergrundfarbe des Footers */
-			padding: 20px; /* Polsterung im Footer für Abstand */
-			text-align: center; /* Zentriert den Text im Footer */
-			margin-top: 200px; /* Abstand zum Inhalt */
-			grid-column: 1 / -1;
-		}	
-			
-		.footer {
-			text-align: center;
-			width: 100%;
-			padding: 20px 0;
-			box-sizing: border-box;
-			background: transparent;
-			color: #262626;
-			font-size: 16px;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			margin: 0 auto;
-		}
+header {
+    grid-column: 1 / -1; /* Header über die gesamte Breite */
+    display: flex; /* Flexbox für Layout */
+    justify-content: space-between; /* Platz zwischen den Elementen */
+    align-items: center; /* Elemente vertikal zentrieren */
+    padding: 10px 20px; /* Innenabstand */
+    position: sticky; /* Macht den Header sticky */
+    top: 0; /* Setzt den Header an den oberen Rand des Viewports */
+    z-index: 1000; /* Stellt sicher, dass der Header über anderen Inhalten liegt */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Fügt einen leichten Schatten hinzu */
+    background: 
+    linear-gradient(to left, #FFFFFF 65%, #E5F6FB 95%); /* Gradient-Hintergrund */
+    color: #262626; /* Textfarbe */
+}
 
-		.logo img {
-            width: 360px; /* oder die Größe, die Sie wünschen */
-            cursor: pointer;
-        }
+footer {
+    background-color: transparent; /* Hintergrundfarbe des Footers */
+    padding: 20px; /* Polsterung im Footer für Abstand */
+    text-align: center; /* Zentriert den Text im Footer */
+    margin-top: 200px; /* Abstand zum Inhalt */
+    grid-column: 1 / -1; /* Footer über die gesamte Breite */
+}
 
-        .menu {
-            display: flex;
-            gap: 20px; /* Abstand zwischen den Menüpunkten */
-			padding-right: 30px;
-			padding-left: 20px;
-        }
+.footer {
+    text-align: center; /* Text zentrieren */
+    width: 100%; /* Volle Breite */
+    padding: 20px 0; /* Polsterung oben und unten */
+    box-sizing: border-box; /* Padding und Border in der Gesamtbreite enthalten */
+    background: transparent; /* Transparenter Hintergrund */
+    color: #262626; /* Textfarbe */
+    font-size: 16px; /* Schriftgröße */
+    display: flex; /* Flexbox für Layout */
+    flex-direction: column; /* Elemente vertikal anordnen */
+    align-items: center; /* Zentriert die Elemente horizontal */
+    justify-content: center; /* Zentriert die Elemente vertikal */
+    margin: 0 auto; /* Zentriert den Footer horizontal */
+}
 
-		body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            grid-template-columns: 15% 70% 15%;
-			grid-template-rows: auto 1fr auto; /* Header und Inhalte */
-            height: 100vh;
-            gap: 20px;
-            /* Verbesserter horizontaler Gradient */
-            background: 
-			linear-gradient(to left, #FFFFFF 65%, #E5F6FB 95%),
-            linear-gradient(to right, #FFFFFF 65%, #E5F6FB 95%);
-            color: #262626;
-        }
-		/* Stil für alle Überschriften */
-		h1, h2, h3, h4, h5, h6 {
-			font-weight: bold; /* Macht die Schrift fett */
-			color: #18227c; /* Setzt die Farbe auf Dunkelblau */
-		}
-		
-        main {
-            background-color: transparent; /* Ermöglicht die Sichtbarkeit des Hintergrund-Gradients */
-            grid-column: 2 / 3;
-        }
-		.sidebar-left {
-			grid-column: 1 / 2;
-			display: flex;
-			flex-direction: column;
-			align-items: center; /* Linksbündige Ausrichtung der Inhalte */
-			justify-content: start;
-		/*	height: 100vh;  Volle Höhe */
-			position: sticky;
-			top: 0;
-			padding: 40px;
-			background-color: transparent; /* Hintergrundfarbe */
-			box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-		}
+.logo img {
+    width: 360px; /* Breite des Bildes */
+    cursor: pointer; /* Mauszeiger ändert sich bei Hover */
+}
 
-		.popupanmelden, .popupregistrieren {
-			position: relative;
-			z-index: 500; /* niedriger als der Header, aber hoch genug für Überlagerungszwecke */
-			width: 100%;
-			display: none;
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			background-color: white;
-			padding: 25px; /* Mehr Innenabstand für den gesamten Popup-Container */
-			border: 1.5px solid #18227c; /* Dunkelblaue Rahmenfarbe */
-			border-radius: 20px;
-			box-shadow: 0 6px 8px rgba(0, 0, 0, 1.5);
-			width: 300px; /* Fixe Breite für das Popup */
-			text-align: center;
+.menu {
+    display: flex; /* Flexbox für Layout */
+    gap: 20px; /* Abstand zwischen den Menüpunkten */
+    padding-right: 30px; /* Rechts Padding */
+    padding-left: 20px; /* Links Padding */
+}
 
-		}
+body {
+    font-family: Arial, sans-serif; /* Schriftart */
+    margin: 0; /* Kein Außenabstand */
+    padding: 0; /* Kein Innenabstand */
+    display: grid; /* Grid-Layout */
+    grid-template-columns: 15% 70% 15%; /* Spaltenbreite */
+    grid-template-rows: auto 1fr auto; /* Zeilenhöhe */
+    height: 100vh; /* Höhe des Viewports */
+    gap: 20px; /* Abstand zwischen den Grid-Elementen */
+    background: 
+    linear-gradient(to left, #FFFFFF 65%, #E5F6FB 95%), /* Hintergrundgradient */
+    linear-gradient(to right, #FFFFFF 65%, #E5F6FB 95%); /* Verbesserter horizontaler Gradient */
+    color: #262626; /* Textfarbe */
+}
 
-		input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="file"], button {
-			width: 100%; /* Setzt die Breite auf die volle Containerbreite */
-			padding: 16px 20px; /* Erhöht die Polsterung für größere Eingabefelder */
-			margin-bottom: 10px; /* Setzt den Abstand zwischen den Feldern */
-			display: block; /* Block-Display, um die volle Breite zu nutzen */
-			border: 1px solid #ccc; /* Feinere Rahmenlinie */
-			border-radius: 20px; /* Abrunden der Ecken */
-			box-sizing: border-box; /* Box-Sizing auf border-box umstellen */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold; /* Macht die Schrift fett */
+    color: #18227c; /* Setzt die Farbe auf Dunkelblau */
+}
 
-		}
-		
-		textarea {
-			width: 100%; /* Setzt die Breite auf die volle Containerbreite */
-			padding: 16px 20px; /* Erhöht die Polsterung für größere Eingabefelder */
-			margin-bottom: 10px; /* Setzt den Abstand zwischen den Feldern */
-			display: block; /* Block-Display, um die volle Breite zu nutzen */
-			border: 1px solid #ccc; /* Feinere Rahmenlinie */
-			border-radius: 20px; /* Abrunden der Ecken */
-			box-sizing: border-box; /* Box-Sizing auf border-box umstellen */
-			resize: vertical; /* Ermöglicht vertikales Vergrößern */
-			font-family: Arial, sans-serif; /* Stellt sicher, dass dieselbe Schriftart verwendet wird */
-			font-size: 16px; /* Einheitliche Schriftgröße */
-			line-height: 1.5; /* Verbessert die Lesbarkeit */
-			height: 150px; /* Setzt die Standardhöhe */
-		}
-		
-		.container-suche {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 20px;
-			min-height: 25vh; /* Stellt sicher, dass die Suchleiste vertikal zentriert ist */
-		}	
-		
-		.tag-suche {
-			display: flex;
-			justify-content: left;
-			align-items: left;
-			padding: 20px;
-			min-height: 10vh;
-		}
-		
-		.search-form {
-			display: flex;
-			gap: 20px; /* Abstand zwischen den Elementen */
-			align-items: center;
-			font-family: Arial, sans-serif; /* Stellt Arial als Schriftart ein */
-			width: 90%; /* Breite des Formulars, anpassbar nach Bedarf */
-			max-width: 1000px; /* Maximale Breite, um auf großen Bildschirmen nicht zu breit zu werden */
-			margin: 30px auto; /* Zentriert das Formular horizontal */
-			padding: 10px;
-			background-color: transparent;
-			border: 1.5px solid #18227c; /* Fügt einen subtilen Rahmen hinzu */
-			border-radius: 50px;
-			box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-		}
+main {
+    background-color: transparent; /* Ermöglicht die Sichtbarkeit des Hintergrund-Gradients */
+    grid-column: 2 / 3; /* Hauptinhalt in der mittleren Spalte */
+}
 
-		select, button {
-			padding: 12px 20px; /* Mehr Padding für ein besseres Aussehen */
-			width: 90%; /* Jedes Feld nimmt die volle Breite des Containers ein */
-			border: 3px solid #18227c; /* Fügt einen subtilen Rahmen hinzu */
-			border-radius: 20px; /* Abrundung der Ecken */
-			cursor: pointer;
-			margin-right: 10px; /* Fügt rechts einen kleinen Abstand hinzu */
-			margin-left:10px;
-			background-color: #fff; /* Hintergrundfarbe Weiß für klare Ansicht */
-			box-sizing: border-box; /* Box-Sizing, um Breitenberechnungen zu vereinfachen */
-		}
-		.container-highlights {
-			text-align: center;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			width: 60%; /* Anpassung der Breite des Hauptcontainers */
-			margin: auto; /* Zentriert den Container horizontal */
-		}
-		
-		.container-vermieteransprache {
-			text-align: center;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			width: 60%; /* Anpassung der Breite des Hauptcontainers */
-			margin: auto; /* Zentriert den Container horizontal */
-		}
-		
-		.container-vermieteransprache p {
-			text-align: center;
-			width: 100%;
-			margin: 0 0 1em 0; /* Abstand zwischen den Absätzen */
-		}
+.sidebar-left {
+    grid-column: 1 / 2; /* Linke Spalte */
+    display: flex; /* Flexbox für Layout */
+    flex-direction: column; /* Elemente vertikal anordnen */
+    align-items: center; /* Elemente zentrieren */
+    justify-content: start; /* Ausrichtung oben */
+    position: sticky; /* Sticky-Position */
+    top: 0; /* Am oberen Rand kleben */
+    padding: 40px; /* Polsterung */
+    background-color: transparent; /* Transparenter Hintergrund */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Schatten rechts */
+}
 
-		.form-container {
-			display: flex; /* Verwendet Flexbox für eine flexible Layout-Gestaltung */
-			flex-direction: column; /* Stapelt Elemente vertikal */
-			gap: 10px; /* Setzt einen Abstand zwischen den Elementen */
-		}
-		/* Grundlegender Stil für Buttons */
-		button, .button {
-			margin-top: 10px; /* Setzt einen Abstand von oben für jeden Button */
-			margin-bottom: 10px; /* Setzt einen Abstand von unten */
-			background-color: #18227c; /* Dunkelblau als Hintergrundfarbe */
-			color: white; /* Weiße Schrift */
-			border: none; /* Keine Rahmen */
-			padding: 14px 20px; /* Polsterung um den Text */
-			white-space: nowrap;
-			text-align: center; /* Zentrierter Text */
-			text-decoration: none; /* Keine Unterstreichung */
-			display: inline-block; /* Inline-Block für automatische Breitenanpassung */
-			font-size: 16px; /* Schriftgröße */
-			cursor: pointer; /* Cursor als Zeiger */
-			border-radius: 20px; /* Abrundung der Ecken */
-			transition: background-color 0.3s, color 0.3s; /* Weiche Übergänge für Farbwechsel */
-			width: auto;
-		}
+.popupanmelden, .popupregistrieren {
+    position: relative; /* Relative Positionierung */
+    z-index: 500; /* niedriger als der Header, aber hoch genug für Überlagerungszwecke */
+    width: 100%; /* Volle Breite */
+    display: none; /* Standardmäßig versteckt */
+    position: fixed; /* Fixe Position */
+    top: 50%; /* Zentriert vertikal */
+    left: 50%; /* Zentriert horizontal */
+    transform: translate(-50%, -50%); /* Perfekte Zentrierung */
+    background-color: white; /* Weißer Hintergrund */
+    padding: 25px; /* Polsterung */
+    border: 1.5px solid #18227c; /* Dunkelblaue Rahmenfarbe */
+    border-radius: 20px; /* Abgerundete Ecken */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 1.5); /* Schatten */
+    width: 300px; /* Fixe Breite */
+    text-align: center; /* Text zentrieren */
+}
 
-		/* Hover-Stil für Buttons */
-		button:hover {
-			background-color: #bd5793; /* Rosa beim Hovern */
-		}
+input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="file"], button {
+    width: 100%; /* Setzt die Breite auf die volle Containerbreite */
+    padding: 16px 20px; /* Erhöht die Polsterung für größere Eingabefelder */
+    margin-bottom: 10px; /* Setzt den Abstand zwischen den Feldern */
+    display: block; /* Block-Display, um die volle Breite zu nutzen */
+    border: 1px solid #ccc; /* Feinere Rahmenlinie */
+    border-radius: 20px; /* Abrunden der Ecken */
+    box-sizing: border-box; /* Box-Sizing auf border-box umstellen */
+}
 
-		/* Spezifischer Stil für die Schließ-Buttons 
-		button.cancel {
-			background-color: #999; /* Grau für Abbrechen-Buttons */
-		
+textarea {
+    width: 100%; /* Setzt die Breite auf die volle Containerbreite */
+    padding: 16px 20px; /* Erhöht die Polsterung für größere Eingabefelder */
+    margin-bottom: 10px; /* Setzt den Abstand zwischen den Feldern */
+    display: block; /* Block-Display, um die volle Breite zu nutzen */
+    border: 1px solid #ccc; /* Feinere Rahmenlinie */
+    border-radius: 20px; /* Abrunden der Ecken */
+    box-sizing: border-box; /* Box-Sizing auf border-box umstellen */
+    resize: vertical; /* Ermöglicht vertikales Vergrößern */
+    font-family: Arial, sans-serif; /* Stellt sicher, dass dieselbe Schriftart verwendet wird */
+    font-size: 16px; /* Einheitliche Schriftgröße */
+    line-height: 1.5; /* Verbessert die Lesbarkeit */
+    height: 150px; /* Setzt die Standardhöhe */
+}
 
-		button.cancel:hover {
-			background-color: #666; /* Dunkelgrau beim Hovern */
-		}
-		
-		/* Stile für das Haus Add Formular */
-		.form-horizontal {
-			display: flex;
-			flex-direction: column;
-			gap: 20px;
-		}
+.container-suche {
+    display: flex; /* Flexbox für Layout */
+    justify-content: center; /* Zentriert die Inhalte horizontal */
+    align-items: center; /* Zentriert die Inhalte vertikal */
+    padding: 20px; /* Polsterung */
+    min-height: 25vh; /* Mindesthöhe für vertikale Zentrierung */
+}
 
-		.form-group {
-			display: flex;
-			gap: 20px;
-		}
+.tag-suche {
+    display: flex; /* Flexbox für Layout */
+    justify-content: left; /* Links ausrichten */
+    align-items: left; /* Links ausrichten */
+    padding: 20px; /* Polsterung */
+    min-height: 10vh; /* Mindesthöhe */
+}
 
-		.form-group-horizontal {
-			display: flex;
-			gap: 20px;
-		}
+.search-form {
+    display: flex; /* Flexbox für Layout */
+    gap: 20px; /* Abstand zwischen den Elementen */
+    align-items: center; /* Zentriert die Inhalte vertikal */
+    font-family: Arial, sans-serif; /* Stellt Arial als Schriftart ein */
+    width: 90%; /* Breite des Formulars */
+    max-width: 1000px; /* Maximale Breite */
+    margin: 30px auto; /* Zentriert das Formular horizontal */
+    padding: 10px; /* Polsterung */
+    background-color: transparent; /* Transparenter Hintergrund */
+    border: 1.5px solid #18227c; /* Rahmen */
+    border-radius: 50px; /* Abgerundete Ecken */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1); /* Schatten */
+}
 
-		.upload_section {
-			display: flex;
-			flex-direction: column;
-			flex: 1;
-			min-width: 150px; /* Mindestbreite für bessere Lesbarkeit */
-		}
-		/* Stile für die Tags-Eingabe und das Dropdown-Menü */
-		.tags-input-container {
-			display: flex;
-			gap: 20px;
-			align-items: flex-start;
-		}
+select, button {
+    padding: 12px 20px; /* Mehr Padding für ein besseres Aussehen */
+    width: 90%; /* Jedes Feld nimmt die volle Breite des Containers ein */
+    border: 3px solid #18227c; /* Fügt einen subtilen Rahmen hinzu */
+    border-radius: 20px; /* Abrundung der Ecken */
+    cursor: pointer; /* Mauszeiger ändert sich bei Hover */
+    margin-right: 10px; /* Fügt rechts einen kleinen Abstand hinzu */
+    margin-left:10px; /* Fügt links einen kleinen Abstand hinzu */
+    background-color: #fff; /* Hintergrundfarbe Weiß */
+    box-sizing: border-box; /* Box-Sizing */
+}
 
-		.tags-input {
-			flex-grow: 1;
-		}
+.container-highlights {
+    text-align: center; /* Text zentrieren */
+    display: flex; /* Flexbox für Layout */
+    flex-direction: column; /* Elemente vertikal anordnen */
+    align-items: center; /* Elemente zentrieren */
+    width: 60%; /* Breite des Containers */
+    margin: auto; /* Zentriert den Container horizontal */
+}
 
-		.tags-container {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 10px;
-			margin-top: 10px;
-			flex-grow: 1;
-		}
+.container-vermieteransprache {
+    text-align: center; /* Text zentrieren */
+    display: flex; /* Flexbox für Layout */
+    flex-direction: column; /* Elemente vertikal anordnen */
+    align-items: center; /* Elemente zentrieren */
+    width: 60%; /* Breite des Containers */
+    margin: auto; /* Zentriert den Container horizontal */
+}
 
-		#tags-select {
-			flex-grow: 1;
-			width: 100%;
-			max-width: 300px;
-			margin-top: 10px;
-		}
+.container-vermieteransprache p {
+    text-align: center; /* Text zentrieren */
+    width: 100%; /* Volle Breite */
+    margin: 0 0 1em 0; /* Abstand zwischen den Absätzen */
+}
 
-		.tag {
-			display: inline-block;
-			background-color: #f1f1f1;
-			border: 1px solid #ccc;
-			padding: 5px;
-			margin: 2px;
-			border-radius: 3px;
-		}
+.form-container {
+    display: flex; /* Flexbox für Layout */
+    flex-direction: column; /* Elemente vertikal anordnen */
+    gap: 10px; /* Abstand zwischen den Elementen */
+}
 
-		.remove-tag {
-			margin-left: 5px;
-			margin-right: 10px;
-			cursor: pointer;
-			color: #ff0000;
-		}
+button, .button {
+    margin-top: 10px; /* Abstand von oben */
+    margin-bottom: 10px; /* Abstand von unten */
+    background-color: #18227c; /* Dunkelblauer Hintergrund */
+    color: white; /* Weiße Schrift */
+    border: none; /* Kein Rahmen */
+    padding: 14px 20px; /* Polsterung */
+    white-space: nowrap; /* Kein automatischer Zeilenumbruch */
+    text-align: center; /* Text zentrieren */
+    text-decoration: none; /* Keine Unterstreichung */
+    display: inline-block; /* Inline-Block für automatische Breitenanpassung */
+    font-size: 16px; /* Schriftgröße */
+    cursor: pointer; /* Mauszeiger ändert sich bei Hover */
+    border-radius: 20px; /* Abgerundete Ecken */
+    transition: background-color 0.3s, color 0.3s; /* Weiche Übergänge für Farbwechsel */
+    width: auto; /* Automatische Breite */
+}
 
-/* Container2 für dynamische Ferienhäuseranzeige */
+button:hover {
+    background-color: #bd5793; /* Hintergrundfarbe beim Hover */
+}
 
-		.container2 {
-			display: flex;
-			align-items: center;
-			margin: 20px;
-			padding: 20px;
-			border: 1px solid #ccc;
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			width: 90%;
-			max-width: 1000px;
-			border-radius: 15px; /* Abgerundete Ecken für den Container */
-		}
-		.container2 img {
-			width: 150px;
-			height: 150px;
-			object-fit: cover; /* Bild skalieren und zuschneiden, um die Größe zu füllen */
-			margin-right: 20px;
-			transition: transform 0.3s; /* Transition-Effekt */
-			border-radius: 15px; /* Abgerundete Ecken für das Bild */
-		}
+button.cancel {
+    background-color: #999; /* Grau für Abbrechen-Buttons */
+}
 
-		/* CSS für die Slideshow */
+button.cancel:hover {
+    background-color: #666; /* Dunkelgrau beim Hover */
+}
 
-		/* Der Container für die gesamte Slideshow */
-		.slideshow-container {
-			position: relative; /* Position relativ zu seinem normalen Standort */
-			max-width: 50%; /* Maximale Breite auf 50% des übergeordneten Containers begrenzt */
-			margin: 0 auto 0 0; /* Linker Rand auf 0, rechter Rand auf auto */
-			border: 3px solid #18227c; /* Rahmenfarbe */
-			border-radius: 20px; /* Abgerundete Ecken */
-			overflow: hidden; /* Verhindert, dass überstehende Inhalte sichtbar sind */
-			background-color: #f8f8f8; /* Hintergrundfarbe, um den Container hervorzuheben */
-			height: 500px; /* Feste Höhe, damit sich die Größe des Containers nicht ändert */
-			display: flex; /* Flexbox-Layout, um Inhalt auszurichten */
-			align-items: left; /* Zentriert den Inhalt vertikal */
-			justify-content: center; /* Zentriert den Inhalt horizontal */
-		}
+.form-horizontal {
+    display: flex; /* Flexbox für Layout */
+    flex-direction: column; /* Elemente vertikal anordnen */
+    gap: 20px; /* Abstand zwischen den Elementen */
+}
 
-		/* Einzelne Slides innerhalb der Slideshow */
-		.slides {
-			display: none; /* Versteckt die Slides standardmäßig */
-			width: 100%; /* Bilder füllen den Container */
-			height: 100%; /* Bilder füllen den Container */
-			object-fit: cover; /* Bilder werden skaliert, um den Container zu füllen */
-			position: absolute; /* Absolute Positionierung innerhalb des Containers */
-		}
+.form-group {
+    display: flex; /* Flexbox für Layout */
+    gap: 20px; /* Abstand zwischen den Elementen */
+}
 
-		/* Die "Vorherige" und "Nächste" Pfeile */
-		.prev, .next {
-			cursor: pointer; /* Ändert den Mauszeiger in einen Zeiger, wenn über den Pfeil gefahren wird */
-			position: absolute; /* Absolute Positionierung innerhalb des Containers */
-			top: 50%; /* Positioniert die Pfeile in der Mitte vertikal */
-			width: auto; /* Breite automatisch */
-			padding: 16px; /* Innenabstand für besseren Klickbereich */
-			margin-top: -22px; /* Verschiebt die Pfeile vertikal nach oben, um sie zu zentrieren */
-			color: white; /* Textfarbe der Pfeile */
-			font-weight: bold; /* Fettschrift für die Pfeile */
-			font-size: 26px; /* Schriftgröße der Pfeile */
-			transition: 0.6s ease; /* Weicher Übergangseffekt bei Hover */
-			user-select: none; /* Verhindert die Textauswahl bei Doppelklick */
-		}
+.form-group-horizontal {
+    display: flex; /* Flexbox für Layout */
+    gap: 20px; /* Abstand zwischen den Elementen */
+}
 
-		/* Der "Vorherige" Pfeil (linker Pfeil) */
-		.prev {
-			left: 0; /* Positioniert den Pfeil am linken Rand */
-			border-radius: 0 5px 5px 0; /* Abgerundete Ecken für den linken Pfeil */
-		}
+.upload_section {
+    display: flex; /* Flexbox für Layout */
+    flex-direction: column; /* Elemente vertikal anordnen */
+    flex: 1; /* Flex-Wachstum */
+    min-width: 150px; /* Mindestbreite */
+}
 
-		/* Der "Nächste" Pfeil (rechter Pfeil) */
-		.next {
-			right: 0; /* Positioniert den Pfeil am rechten Rand */
-			border-radius: 5px 0 0 5px; /* Abgerundete Ecken für den rechten Pfeil */
-		}
+.tags-input-container {
+    display: flex; /* Flexbox für Layout */
+    gap: 20px; /* Abstand zwischen den Elementen */
+    align-items: flex-start; /* Elemente oben ausrichten */
+}
 
-		/* Hover-Effekt für die Pfeile */
-		.prev:hover, .next:hover {
-			background-color: rgba(0, 0, 0, 0.8); /* Hintergrundfarbe beim Hover */
-		}
+.tags-input {
+    flex-grow: 1; /* Flex-Wachstum */
+}
 
-		/* Der Container für den Lageplan */
-		.lageplan-container {
-			margin-top: 20px; /* Abstand zum oberen Element */
-			border: 3px #18227c; /* Rahmenfarbe */
-			border-radius: 20px; /* Abgerundete Ecken */
-			overflow: hidden; /* Verhindert, dass überstehende Inhalte sichtbar sind */
-			background-color: #f8f8f8; /* Hintergrundfarbe, um den Container hervorzuheben */
-			height: 300px; /* Höhe des Lageplan-Bildes */
-			width: 500px; /* Breite des Lageplan-Bildes */
-			display: flex; /* Flexbox-Layout, um Inhalt auszurichten */
-			align-items: center; /* Zentriert den Inhalt vertikal */
-			justify-content: center; /* Zentriert den Inhalt horizontal */
-		}
-		
-		/*Tabellenstyle für alle Tabellen (egal ob meine_buchungen.php, unterkuenfte_verwalten.php oder alle Admin Tabellen)*/
-		table {
-			width: 80%;                /* Die Tabelle nimmt 80% der Seitenbreite ein */
-			margin: auto;            /* Zentriert die Tabelle horizontal auf der Seite */
-			border-collapse: collapse; /* Entfernt die Abstände zwischen den Tabellenzellen, sodass die Ränder der Zellen zusammengeführt werden */
-		}
+.tags-container {
+    display: flex; /* Flexbox für Layout */
+    flex-wrap: wrap; /* Elemente umbrechen */
+    gap: 10px; /* Abstand zwischen den Elementen */
+    margin-top: 10px; /* Abstand von oben */
+    flex-grow: 1; /* Flex-Wachstum */
+}
 
-		/* Stile für die Tabelle, Tabellenkopfzellen (th) und Tabellenzellen (td) */
-		table, th, td {
-			border: 3px solid #18227c;   /* Setzt einen Rand um die gesamte Tabelle sowie um jede Kopf- und Datenzelle */
-		}
+#tags-select {
+    flex-grow: 1; /* Flex-Wachstum */
+    width: 100%; /* Volle Breite */
+    max-width: 300px; /* Maximale Breite */
+    margin-top: 10px; /* Abstand von oben */
+}
 
-		/* Stile für die Tabellenkopfzellen (th) und Tabellenzellen (td) */
-		th, td {
-			padding: 5px;             /* Fügt innerhalb jeder Zelle einen Abstand von 5 Pixeln ein, um den Inhalt von den Rändern der Zelle zu trennen */
-			text-align: left;         /* Richtet den Text innerhalb jeder Zelle linksbündig aus */
-			height: 30px;             /* Setzt die Höhe jeder Zelle auf 30 Pixel, um eine konsistente Zeilenhöhe zu gewährleisten */
-			overflow: hidden;         /* Verhindert, dass der Inhalt die festgelegte Höhe überschreitet */
-			white-space: nowrap;      /* Verhindert den automatischen Zeilenumbruch innerhalb der Zellen */
-		}
+.tag {
+    display: inline-block; /* Inline-Block für automatische Breitenanpassung */
+    background-color: #f1f1f1; /* Hintergrundfarbe */
+    border: 1px solid #ccc; /* Rahmenfarbe */
+    padding: 5px; /* Polsterung */
+    margin: 2px; /* Außenabstand */
+    border-radius: 3px; /* Abgerundete Ecken */
+}
 
-		/* Zusätzlicher Stil nur für die Tabellenkopfzellen (th) */
-		th {
-			background-color: #f2f2f2; /* Setzt den Hintergrund der Tabellenkopfzellen auf ein hellgraues Farbschema */
-		}
-		caption {
-			caption-side: top;
-			text-align: center;
-			margin-bottom: 10px;
-		}
-		.welcome-message {
-			text-align: center; 
-			color: #18227c;
-		}
+.remove-tag {
+    margin-left: 5px; /* Abstand von links */
+    margin-right: 10px; /* Abstand von rechts */
+    cursor: pointer; /* Mauszeiger ändert sich bei Hover */
+    color: #ff0000; /* Schriftfarbe */
+}
 
+.container2 {
+    display: flex; /* Flexbox für Layout */
+    align-items: center; /* Elemente vertikal zentrieren */
+    margin: 20px; /* Außenabstand */
+    padding: 20px; /* Polsterung */
+    border: 1px solid #ccc; /* Rahmenfarbe */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Schatten */
+    width: 90%; /* Breite */
+    max-width: 1000px; /* Maximale Breite */
+    border-radius: 15px; /* Abgerundete Ecken */
+}
 
+.container2 img {
+    width: 150px; /* Breite des Bildes */
+    height: 150px; /* Höhe des Bildes */
+    object-fit: cover; /* Bild skalieren und zuschneiden */
+    margin-right: 20px; /* Abstand von rechts */
+    transition: transform 0.3s; /* Transition-Effekt */
+    border-radius: 15px; /* Abgerundete Ecken */
+}
 
+.slideshow-container {
+    position: relative; /* Position relativ zu seinem normalen Standort */
+    max-width: 50%; /* Maximale Breite auf 50% des übergeordneten Containers begrenzt */
+    margin: 0 auto 0 0; /* Linker Rand auf 0, rechter Rand auf auto */
+    border: 3px solid #18227c; /* Rahmenfarbe */
+    border-radius: 20px; /* Abgerundete Ecken */
+    overflow: hidden; /* Verhindert, dass überstehende Inhalte sichtbar sind */
+    background-color: #f8f8f8; /* Hintergrundfarbe */
+    height: 500px; /* Feste Höhe */
+    display: flex; /* Flexbox für Layout */
+    align-items: left; /* Elemente links ausrichten */
+    justify-content: center; /* Elemente zentrieren */
+}
 
+.slides {
+    display: none; /* Versteckt die Slides standardmäßig */
+    width: 100%; /* Bilder füllen den Container */
+    height: 100%; /* Bilder füllen den Container */
+    object-fit: cover; /* Bilder werden skaliert */
+    position: absolute; /* Absolute Positionierung */
+}
+
+.prev, .next {
+    cursor: pointer; /* Mauszeiger ändert sich bei Hover */
+    position: absolute; /* Absolute Positionierung */
+    top: 50%; /* Vertikal zentriert */
+    width: auto; /* Breite automatisch */
+    padding: 16px; /* Innenabstand */
+    margin-top: -22px; /* Verschiebt die Pfeile vertikal */
+    color: white; /* Textfarbe */
+    font-weight: bold; /* Fettschrift */
+    font-size: 26px; /* Schriftgröße */
+    transition: 0.6s ease; /* Weicher Übergangseffekt */
+    user-select: none; /* Verhindert Textauswahl */
+}
+
+.prev {
+    left: 0; /* Linker Rand */
+    border-radius: 0 5px 5px 0; /* Abgerundete Ecken */
+}
+
+.next {
+    right: 0; /* Rechter Rand */
+    border-radius: 5px 0 0 5px; /* Abgerundete Ecken */
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Hintergrundfarbe beim Hover */
+}
+
+.lageplan-container {
+    margin-top: 20px; /* Abstand von oben */
+    border: 3px solid #18227c; /* Rahmenfarbe */
+    border-radius: 20px; /* Abgerundete Ecken */
+    overflow: hidden; /* Verhindert, dass überstehende Inhalte sichtbar sind */
+    background-color: #f8f8f8; /* Hintergrundfarbe */
+    height: 300px; /* Höhe */
+    width: 500px; /* Breite */
+    display: flex; /* Flexbox für Layout */
+    align-items: center; /* Elemente zentrieren */
+    justify-content: center; /* Elemente zentrieren */
+}
+
+table {
+    width: 80%; /* Die Tabelle nimmt 80% der Seitenbreite ein */
+    margin: auto; /* Zentriert die Tabelle horizontal */
+    border-collapse: collapse; /* Entfernt die Abstände zwischen den Zellen */
+}
+
+table, th, td {
+    border: 3px solid #18227c; /* Rahmen um die gesamte Tabelle sowie jede Kopf- und Datenzelle */
+}
+
+th, td {
+    padding: 5px; /* Abstand innerhalb jeder Zelle */
+    text-align: left; /* Text linksbündig */
+    height: 30px; /* Zellenhöhe */
+    overflow: hidden; /* Verhindert, dass der Inhalt die Zellenhöhe überschreitet */
+    white-space: nowrap; /* Verhindert Zeilenumbruch */
+}
+
+th {
+    background-color: #f2f2f2; /* Hintergrundfarbe der Tabellenkopfzellen */
+}
+
+caption {
+    caption-side: top; /* Positionierung der Tabellenbeschriftung oben */
+    text-align: center; /* Zentriert die Tabellenbeschriftung */
+    margin-bottom: 10px; /* Abstand nach unten */
+}
+
+.welcome-message {
+    text-align: center; /* Text zentrieren */
+    color: #18227c; /* Textfarbe */
+}
+
+/* Stildefinitionen für das heroImageGrid */
+.c-heroImageGrid {
+  position: relative; /* Setzt die Position relativ zum nächsten positionierten Vorfahren */
+  overflow: hidden; /* Verhindert das Überlaufen von Inhalten */
+  height: 50vw; /* Setzt die Höhe auf 50% der Viewport-Breite */
+  background: #fff; /* Weißer Hintergrund */
+  margin-bottom: 60px; /* 60px Abstand nach unten */
+}
+
+.c-heroImageGrid .container {
+  display: flex; /* Flexbox-Layout */
+  align-items: flex-end; /* Elemente am unteren Rand des Containers ausrichten */
+  position: absolute; /* Absolute Positionierung */
+  top: -20vw; /* 20% der Viewport-Breite nach oben verschieben */
+  left: -8vw; /* 8% der Viewport-Breite nach links verschieben */
+  transform: rotateZ(45deg); /* Container um 45 Grad drehen */
+  height: 100vw; /* Höhe auf 100% der Viewport-Breite setzen */
+  width: 107vw; /* Breite auf 107% der Viewport-Breite setzen */
+}
+
+.c-heroImageGrid .container .column {
+  overflow: hidden; /* Verhindert das Überlaufen von Inhalten */
+  position: relative; /* Relative Positionierung */
+}
+
+/* Erste Spalte des Containers */
+.c-heroImageGrid .container .column:nth-of-type(1) {
+  border-right: 8px solid white; /* Rechte Begrenzungslinie */
+  width: 25%; /* Breite auf 25% des Containers setzen */
+  height: 66vw; /* Höhe auf 66% der Viewport-Breite setzen */
+}
+
+.c-heroImageGrid .container .column:nth-of-type(1):before {
+  position: absolute; /* Absolute Positionierung */
+  top: 8.4vw; /* 8.4% der Viewport-Breite nach unten verschieben */
+  left: 8.1vw; /* 8.1% der Viewport-Breite nach links verschieben */
+  background-repeat: no-repeat; /* Hintergrundbild nicht wiederholen */
+  background-size: cover; /* Hintergrundbild skalieren, um den gesamten Bereich abzudecken */
+  transform: rotateZ(-45deg); /* Element um -45 Grad drehen */
+  content: ""; /* Leeres Pseudoelement */
+  width: 37vw; /* Breite auf 37% der Viewport-Breite setzen */
+  height: 38vw; /* Höhe auf 38% der Viewport-Breite setzen */
+  background-image: url('STRR.jpg'); /* Hintergrundbild festlegen */
+}
+
+/* Zweite Spalte des Containers */
+.c-heroImageGrid .container .column:nth-of-type(2) {
+  display: flex; /* Flexbox-Layout */
+  flex-direction: column-reverse; /* Spalten in umgekehrter Reihenfolge */
+  width: 75%; /* Breite auf 75% des Containers setzen */
+  height: 109.1vw; /* Höhe auf 109.1% der Viewport-Breite setzen */
+}
+
+.c-heroImageGrid .container .column:nth-of-type(2) .row {
+  border-top: 8px solid #fff; /* Obere Begrenzungslinie */
+}
+
+/* Erste Zeile der zweiten Spalte */
+.c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(1) {
+  position: relative; /* Relative Positionierung */
+  overflow: hidden; /* Verhindert das Überlaufen von Inhalten */
+  height: 50vw; /* Höhe auf 50% der Viewport-Breite setzen */
+}
+
+.c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(1):before {
+  position: absolute; /* Absolute Positionierung */
+  top: -10.1vw; /* 10.1% der Viewport-Breite nach oben verschieben */
+  left: -14.3vw; /* 14.3% der Viewport-Breite nach links verschieben */
+  background-repeat: no-repeat; /* Hintergrundbild nicht wiederholen */
+  background-size: cover; /* Hintergrundbild skalieren, um den gesamten Bereich abzudecken */
+  transform: rotateZ(-45deg); /* Element um -45 Grad drehen */
+  content: ""; /* Leeres Pseudoelement */
+  width: 65vw; /* Breite auf 65% der Viewport-Breite setzen */
+  height: 39vw; /* Höhe auf 39% der Viewport-Breite setzen */
+  background-image: url('FW_ME_BO_PR 1.jpg'); /* Hintergrundbild festlegen */
+}
+
+/* Zweite Zeile der zweiten Spalte */
+.c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) {
+  display: flex; /* Flexbox-Layout */
+  height: 40.5vw; /* Höhe auf 40.5% der Viewport-Breite setzen */
+}
+
+.c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(3) {
+  border-top: none; /* Keine obere Begrenzungslinie */
+}
+
+/* Erste Spalte der zweiten Zeile der zweiten Spalte */
+.c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) {
+  overflow: hidden; /* Verhindert das Überlaufen von Inhalten */
+  width: 30%; /* Breite auf 30% setzen */
+  background-color: #8B8B8A; /* Hintergrundfarbe */
+}
+
+/* Text innerhalb der ersten Spalte der zweiten Zeile */
+.c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) .text {
+  width: 100%; /* Breite auf 100% setzen */
+  height: 100%; /* Höhe auf 100% setzen */
+  overflow: visible; /* Überlaufen sichtbar machen */
+  transform: rotateZ(-45deg); /* Text um -45 Grad drehen */
+  position: relative; /* Relative Positionierung */
+}
+
+.c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) .text h6 {
+  position: absolute; /* Absolute Positionierung */
+  color: #fff; /* Textfarbe weiß */
+  text-transform: uppercase; /* Text in Großbuchstaben umwandeln */
+  font-weight: bold; /* Fettgedruckter Text */
+  font-size: 1.35vw; /* Schriftgröße auf 1.35% der Viewport-Breite setzen */
+  width: 20vw; /* Breite auf 20% der Viewport-Breite setzen */
+  top: 16vw; /* 16% der Viewport-Breite nach unten verschieben */
+  left: 7vw; /* 7% der Viewport-Breite nach links verschieben */
+  line-height: 1.55vw; /* Zeilenhöhe auf 1.55% der Viewport-Breite setzen */
+}
+
+.c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) .text p {
+  text-align: left; /* Text linksbündig ausrichten */
+  position: absolute; /* Absolute Positionierung */
+  color: #fff; /* Textfarbe weiß */
+  font-size: 0.9vw; /* Schriftgröße auf 0.9% der Viewport-Breite setzen */
+  width: 18vw; /* Breite auf 18% der Viewport-Breite setzen */
+  top: 23.5vw; /* 23.5% der Viewport-Breite nach unten verschieben */
+  left: -3.5vw; /* 3.5% der Viewport-Breite nach links verschieben */
+}
+
+/* Zweite Spalte der zweiten Zeile der zweiten Spalte */
+.c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(2) {
+  position: relative; /* Relative Positionierung */
+  width: 60%; /* Breite auf 60% setzen */
+  border-left: 8px solid white; /* Linke Begrenzungslinie */
+  overflow: hidden; /* Verhindert das Überlaufen von Inhalten */
+}
+
+.c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(2):before {
+  position: absolute; /* Absolute Positionierung */
+  top: 0; /* Kein vertikales Verschieben */
+  left: -70vw; /* 70% der Viewport-Breite nach links verschieben */
+  width: 110.1vw; /* Breite auf 110.1% der Viewport-Breite setzen */
+  height: 110vw; /* Höhe auf 110% der Viewport-Breite setzen */
+  background-repeat: no-repeat; /* Hintergrundbild nicht wiederholen */
+  background-size: cover; /* Hintergrundbild skalieren, um den gesamten Bereich abzudecken */
+  transform: rotateZ(-45deg); /* Element um -45 Grad drehen */
+  content: ""; /* Leeres Pseudoelement */
+  background-image: url('house-at-pier-lake-1v.jpg'); /* Hintergrundbild festlegen */
+}
+
+/* Dritte Zeile der zweiten Spalte */
+.c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(3) {
+  position: relative; /* Relative Positionierung */
+  height: 18.6vw; /* Höhe auf 18.6% der Viewport-Breite setzen */
+  overflow: hidden; /* Verhindert das Überlaufen von Inhalten */
+}

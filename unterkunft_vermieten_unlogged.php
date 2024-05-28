@@ -65,7 +65,7 @@ exclude_user_Roles (['Vermieter', 'Mieter', 'Admin'], 'index.php');
 <footer>
   <p>Kontaktieren Sie uns für weitere Informationen:</p>
   <p>Telefon: 123-456-789</p>
-  <p>Email: info@IhrFerienDomizil.com</p>
+  <p>Email: <a href="mailto:info@IhrFerienDomizil.com">info@IhrFerienDomizil.com</a></p>
 </footer>
 
 

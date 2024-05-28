@@ -1,12 +1,6 @@
 <?php
 include 'db_connect.php';
 
-// Überprüfen, ob der Benutzer eingeloggt ist
-if (!isset($_SESSION['USER_ID'])) {
-    echo "Sie müssen eingeloggt sein, um diese Aktion auszuführen.";
-    exit;
-}
-
 $user_id = $_SESSION['USER_ID'];
 
 $haeuser = [];
@@ -55,19 +49,23 @@ if (isset($_GET['haus_id'])) {
 }
 $conn->close();
 ?>
-<?php if (!isset($_GET['haus_id'])): ?>
+<?php if (!isset($_GET['haus_id'])): ?> 
+<!-- Überprüft, ob die URL-Parameter haus_id nicht gesetzt sind. Wenn sie nicht gesetzt sind, wird der folgende Block ausgeführt. -->
 <div class="haus_list">
     <h3>Wählen Sie ein Haus, um die Buchungen zu sehen:</h3>
     <ul>
         <?php if (!empty($haeuser)): ?>
+            <!-- Überprüft, ob die Variable $haeuser nicht leer ist. Wenn true, dann wird die Schleife ausgeführt -->
             <?php foreach ($haeuser as $hausItem): ?>
+                <!-- Iteriert über jedes Element im Array $haeuser und weist es der Variable $hausItem zu. -->
                 <li>
-                    <a href="?page=bookings&haus_id=<?php echo $hausItem['HAUS_ID']; ?>">
-                        <?php echo htmlspecialchars($hausItem['name']); ?> (<?php echo $hausItem['buchung_count']; ?> Buchungen)
+					<a href="?page=bookings&haus_id=<?php echo $hausItem['HAUS_ID']; ?>"><!-- Erstellt Link, der Benutzer zur Seite führt, wo die Buchungen für das ausgewählte Haus angezeigt werden. HAUS_ID ist URL Parameter. -->
+					<?php echo htmlspecialchars($hausItem['name']); ?> (<?php echo $hausItem['buchung_count']; ?> Buchungen)<!-- Gibt den Namen des Hauses und die Anzahl der Buchungen mit "htmlspecialchars" aus. -->
                     </a>
                 </li>
             <?php endforeach; ?>
         <?php else: ?>
+            <!-- Wenn $haeuser leer ist, wird diese Nachricht angezeigt. -->
             <li>Keine Häuser vorhanden.</li>
         <?php endif; ?>
     </ul>
@@ -75,10 +73,13 @@ $conn->close();
 <?php endif; ?>
 
 <?php if ($haus): ?>
+    <!-- Überprüft, ob die Variable $haus gesetzt ist. Wenn sie gesetzt ist, wird der folgende Block ausgeführt. -->
     <div class="haus_details">
         <?php if (!empty($buchungen)): ?>
+            <!-- Überprüft, ob die Variable $buchungen nicht leer ist. Wenn sie nicht leer ist, wird die folgende Tabelle erstellt. -->
             <table>
-				<caption><h3>Buchungen für <?php echo htmlspecialchars($haus['name']); ?>:</h3></caption> 
+                <caption><h3>Buchungen für <?php echo htmlspecialchars($haus['name']); ?>:</h3></caption>
+                <!-- Gibt eine Beschriftung der Tabelle aus, die den Namen des Hauses anzeigt. -->
                 <thead>
                 <tr>
                     <th>Nachname</th>
@@ -90,7 +91,8 @@ $conn->close();
                 </thead>
                 <tbody>
                 <?php foreach ($buchungen as $buchung): ?>
-                    <tr>
+                    <!-- Iteriert über jedes Element im Array $buchungen und weist es der Variable $buchung zu. -->
+                    <tr> <!-- Gibt Elemente der Buchung in einer Tabelle aus -->
                         <td><?php echo htmlspecialchars($buchung['surname']); ?></td>
                         <td><?php echo htmlspecialchars($buchung['email']); ?></td>
                         <td><?php echo htmlspecialchars($buchung['gesamtpreis']) . ' EUR'; ?></td>
@@ -101,6 +103,7 @@ $conn->close();
                 </tbody>
             </table>
         <?php else: ?>
+            <!-- Wenn $buchungen leer ist, wird diese Nachricht angezeigt. -->
             <p>Keine Buchungen vorhanden.</p>
         <?php endif; ?>
     </div>

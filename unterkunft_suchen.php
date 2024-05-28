@@ -135,7 +135,7 @@ if (!empty($personen) && !empty($land)) {
         echo '<div class="container2">';
         echo '<img src="' . htmlspecialchars($img_url, ENT_QUOTES, 'UTF-8') . '" alt="Bild">';
         echo '<div class="text">';
-        echo '<h2><a href="detailseite_unterkuenfte.php?HAUS_ID=' . htmlspecialchars($haus['HAUS_ID'], ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($haus['name'], ENT_QUOTES, 'UTF-8') . '</a></h2>';
+        echo '<h2><a href="unterkunft_details.php?HAUS_ID=' . htmlspecialchars($haus['HAUS_ID'], ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($haus['name'], ENT_QUOTES, 'UTF-8') . '</a></h2>';
         echo '<p><b>Adresse: </b>' . htmlspecialchars($haus['adresse'], ENT_QUOTES, 'UTF-8') . '</p>';
         echo '<p><b>Preis: </b>' . htmlspecialchars($haus['preis'], ENT_QUOTES, 'UTF-8') . ' EUR</p>';
         echo '<p><b>Max. Personen: </b>' . htmlspecialchars($haus['personen'], ENT_QUOTES, 'UTF-8') . '</p>';
