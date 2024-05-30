@@ -30,42 +30,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
 // Ferienhaus löschen
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
     $haus_id = $_POST['haus_id'];
-
-    // Bilder löschen
-    $stmt = $conn->prepare("SELECT img_url FROM img WHERE HAUS_ID=?");
-    $stmt->bind_param("i", $haus_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while ($row = $result->fetch_assoc()) {
-        if (file_exists($row['img_url'])) {
-            unlink($row['img_url']); // Löscht die Datei vom Server
+    
+    try {
+        // Bilder löschen
+        $stmt = $conn->prepare("SELECT img_url FROM img WHERE HAUS_ID=?");
+        $stmt->bind_param("i", $haus_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            if (file_exists($row['img_url'])) {
+                unlink($row['img_url']); // Löscht die Datei vom Server
+            }
         }
+        $stmt->close();
+
+        // Bilddatensätze löschen
+        $stmt = $conn->prepare("DELETE FROM img WHERE HAUS_ID=?");
+        $stmt->bind_param("i", $haus_id);
+        $stmt->execute();
+        $stmt->close();
+
+        // Tag-Zuordnungen löschen
+        $stmt = $conn->prepare("DELETE FROM tag_haus_relation WHERE HAUS_ID=?");
+        $stmt->bind_param("i", $haus_id);
+        $stmt->execute();
+        $stmt->close();
+
+        // Haus löschen
+        $stmt = $conn->prepare("DELETE FROM haus WHERE HAUS_ID=? AND USER_ID=?");
+        $stmt->bind_param("ii", $haus_id, $user_id);
+        if ($stmt->execute()) {
+            echo "<script>alert('Das Haus wurde erfolgreich gelöscht.'); window.location.href='unterkuenfte_verwalten.php?page=edit';</script>";
+        } else {
+            echo "<script>alert('Fehler beim Löschen des Hauses.'); window.location.href='unterkuenfte_verwalten.php?page=edit';</script>";
+        }
+        $stmt->close();
+    } catch (mysqli_sql_exception $e) {
+        echo "<script>alert('Fehler: Es liegen aktuell noch Buchungen für Ihr Ferienhaus vor, bitte nehmen Sie Kontakt mit uns auf.'); window.location.href='unterkuenfte_verwalten.php?page=edit';</script>";
     }
-    $stmt->close();
-
-    // Bilddatensätze löschen
-    $stmt = $conn->prepare("DELETE FROM img WHERE HAUS_ID=?");
-    $stmt->bind_param("i", $haus_id);
-    $stmt->execute();
-    $stmt->close();
-
-    // Tag-Zuordnungen löschen
-    $stmt = $conn->prepare("DELETE FROM tag_haus_relation WHERE HAUS_ID=?");
-    $stmt->bind_param("i", $haus_id);
-    $stmt->execute();
-    $stmt->close();
-
-    // Haus löschen
-    $stmt = $conn->prepare("DELETE FROM haus WHERE HAUS_ID=? AND USER_ID=?");
-    $stmt->bind_param("ii", $haus_id, $user_id);
-    if ($stmt->execute()) {
-        echo "<script>alert('Das Haus wurde erfolgreich gelöscht.'); window.location.href='unterkuenfte_verwalten.php?page=edit';</script>";
-    } else {
-        echo "<script>alert('Fehler beim Löschen des Hauses.'); window.location.href='unterkuenfte_verwalten.php?page=edit';</script>";
-    }
-    $stmt->close();
 }
-
 // Haus-Daten abrufen
 if (isset($_GET['haus_id'])) {
     $haus_id = $_GET['haus_id'];
@@ -103,11 +106,19 @@ if (isset($_GET['haus_id'])) {
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
-    echo '<div class="haus_list"><h3>Wählen Sie ein Haus zum Bearbeiten:</h3><ul>';
-    while ($row = $result->fetch_assoc()) {
-        echo '<li><a href="?page=edit&haus_id=' . $row['HAUS_ID'] . '">' . htmlspecialchars($row['name']) . '</a></li>';
-    }
-    echo '</ul></div>';
+	echo '<div class="haus_list"><h3>Wählen Sie ein Haus zum Bearbeiten:</h3>';
+
+	if ($result->num_rows > 0) {
+		echo '<ul>';
+		while ($row = $result->fetch_assoc()) {
+			echo '<li><a href="?page=edit&haus_id=' . $row['HAUS_ID'] . '">' . htmlspecialchars($row['name']) . '</a></li>';
+		}
+		
+	} else {
+		echo '<li>Keine Häuser vorhanden.</li>';
+	}
+	echo '</ul>';
+	echo '</div>';
     $stmt->close();
     $conn->close();
     exit;

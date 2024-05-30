@@ -19,12 +19,34 @@ function update_house($conn, $haus_id, $name, $personen, $land, $adresse, $preis
     return $stmt->execute(); // Ausführen der Abfrage
 }
 
-// Funktion zum Löschen eines Hauses
+// Funktion zum Löschen eines Hauses, inklusive zugehöriger Bilder und Tag-Zuordnungen
 function delete_house($conn, $haus_id) {
-    $sql = "DELETE FROM haus WHERE HAUS_ID = ?"; // SQL-Abfrage zum Löschen eines Hauses
-    $stmt = $conn->prepare($sql); // Vorbereiten der Abfrage
-    $stmt->bind_param("i", $haus_id); // Parameter an die Abfrage binden
-    return $stmt->execute(); // Ausführen der Abfrage
+    try {
+        // Bilder löschen
+        $sql = "DELETE FROM img WHERE HAUS_ID = ?";
+        $stmt = $conn->prepare($sql); // Vorbereiten der Abfrage
+        $stmt->bind_param("i", $haus_id); // Parameter an die Abfrage binden
+        $stmt->execute(); // Ausführen der Abfrage
+        $stmt->close(); // Schließen der Abfrage
+
+        // Tag-Zuordnungen löschen
+        $sql = "DELETE FROM tag_haus_relation WHERE HAUS_ID = ?";
+        $stmt = $conn->prepare($sql); // Vorbereiten der Abfrage
+        $stmt->bind_param("i", $haus_id); // Parameter an die Abfrage binden
+        $stmt->execute(); // Ausführen der Abfrage
+        $stmt->close(); // Schließen der Abfrage
+
+        // Haus löschen
+        $sql = "DELETE FROM haus WHERE HAUS_ID = ?";
+        $stmt = $conn->prepare($sql); // Vorbereiten der Abfrage
+        $stmt->bind_param("i", $haus_id); // Parameter an die Abfrage binden
+        $stmt->execute(); // Ausführen der Abfrage
+        $stmt->close(); // Schließen der Abfrage
+
+        return true; // Erfolgreiches Löschen
+    } catch (mysqli_sql_exception $e) {
+        echo "<script>alert('Fehler: Es existieren noch Buchungen zu diesem Haus, bitte löschen Sie diese zuerst.'); window.location.href='verwaltung_haeuser.php';</script>";
+    }
 }
 
 // Handling der Formulareingaben
@@ -35,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Überprüfen, ob das Formular mit
                 update_house($conn, $_POST['haus_id'], $_POST['name'], $_POST['personen'], $_POST['land'], $_POST['adresse'], $_POST['preis'], $_POST['beschreibung']); // Haus aktualisieren
                 break;
             case 'delete': // Falls die Aktion 'delete' ist
-                delete_house($conn, $_POST['haus_id']); // Haus löschen
+					delete_house($conn, $_POST['haus_id']); // Haus löschen
                 break;
         }
     }

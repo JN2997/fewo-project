@@ -21,10 +21,15 @@ function update_user($conn, $user_id, $forname, $surname, $email, $role) {
 
 // Funktion zum Löschen eines Benutzers
 function delete_user($conn, $user_id) {
-    $sql = "DELETE FROM users WHERE USER_ID = ?"; // SQL-Abfrage zum Löschen eines Benutzers
-    $stmt = $conn->prepare($sql); // Vorbereiten der Abfrage
-    $stmt->bind_param("i", $user_id); // Parameter an die Abfrage binden
-    return $stmt->execute(); // Ausführen der Abfrage
+	try {
+		$sql = "DELETE FROM users WHERE USER_ID = ?"; // SQL-Abfrage zum Löschen eines Benutzers
+		$stmt = $conn->prepare($sql); // Vorbereiten der Abfrage
+		$stmt->bind_param("i", $user_id); // Parameter an die Abfrage binden
+		return $stmt->execute(); // Ausführen der Abfrage
+	} catch (mysqli_sql_exception $e) {
+        echo "<script>alert('Fehler: Der Nutzer hat noch Buchungen oder Ferienhäuser, bitte löschen Sie diese zunächst.'); window.location.href='verwaltung_user.php';</script>";
+        return false; // Fehler beim Löschen
+    }
 }
 
 // Handling der Formulareingaben
